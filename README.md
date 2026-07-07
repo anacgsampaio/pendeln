@@ -32,10 +32,11 @@ Everything is in [`docs/`](docs/), written to be picked up and continued by huma
 | [04 — Content Pipeline](docs/04-content-pipeline.md) | How lecture content becomes lessons (the heart of the app) |
 | [05 — PRD](docs/05-prd.md) | Requirements, success metrics, phases, open questions |
 | [06 — Handoff Notes](docs/06-handoff-notes.md) | Voice, vibe, and context for anyone (or any model) continuing this work |
+| [07 — Build Blueprint](docs/07-build-blueprint.md) | How the whole system actually runs — the wiring diagram behind the pipeline |
 
 ## Status
 
-📍 **Phase 0 — scoping.** No code yet. Docs first, on purpose.
+📍 **Phase 1 — the pipeline works.** [`pipeline/`](pipeline/) has the working CLI: feed it course notes, slides (PDF) or a whiteboard photo, review the extraction in 60 seconds, and it generates validated exercise JSON into an item bank with real spaced repetition. Sessions assemble offline. Design explorations live in [`design/`](design/). Next: dogfood with real Woche 1 material, then the Expo app.
 
 ## Who's behind this
 

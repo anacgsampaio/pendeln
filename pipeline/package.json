@@ -1,0 +1,23 @@
+{
+  "name": "pendeln-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "pendeln phase-1 pipeline CLI: course material in, commute-sized exercise JSON out. 🚃",
+  "bin": {
+    "pendeln": "bin/pendeln.mjs"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "pendeln": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.88.0",
+    "tsx": "^4.19.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5.6.0"
+  }
+}
