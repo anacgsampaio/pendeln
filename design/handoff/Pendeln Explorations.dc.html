@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EFEBE2;font-family:'General Sans',system-ui,sans-serif}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'General Sans',system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;margin-top:24px}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 'General Sans',system-ui,sans-serif;color:rgba(0,0,0,.6)}
+.dv-opt:target .dv-oid{background:#1a1a1a;color:#F2C400}
+.dv-next{margin:26px 0 0;font:12px/1.5 'General Sans',system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.dv-row{display:flex;gap:24px;align-items:flex-start}
+</style>
+</helmet>
+
+<section style="padding: 36px 44px 28px; border-bottom: 1px solid rgba(0,0,0,.08)">
+  <div style="display:flex;align-items:baseline;gap:12px">
+    <span style="font-size:22px;font-weight:600;color:#1a1a1a">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1a1a1a" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#EFEBE2" stroke="#1a1a1a" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#EFEBE2" stroke="#1a1a1a" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1a1a1a"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1a1a1a"></circle></svg> — design exploration 01</span>
+    <span style="font-size:12px;color:rgba(0,0,0,.5)">session player + Heute · mobile portrait · July 2026</span>
+  </div>
+  <div style="max-width:760px;margin-top:14px;font-size:13px;line-height:1.6;color:rgba(0,0,0,.65)">
+    <strong style="color:#1a1a1a">Grounding:</strong> docs 03 + 06 (direction, anti-references, one-thumb), doc 04 (real content: "die Umwelt" cloze, Konjunktiv II).
+    <strong style="color:#1a1a1a">System:</strong> warm off-white / deep ink, General Sans (the "good grotesque"), line iconography, transit-line-as-progress kept <em>subtle</em> — a thin line with station dots at the top of the player. Answers live in the bottom half (one thumb, bag in the other hand). Semantic green/red only on right/wrong. No streaks, no confetti, no mascot guilt.
+    <strong style="color:#1a1a1a">Three accent directions below</strong> — same skeleton, different temperature: <a class="dv-oid" href="#1a">1a</a> signal yellow, <a class="dv-oid" href="#1b">1b</a> mustard, <a class="dv-oid" href="#1c">1c</a> night ride (ink-dominant, marigold).
+  </div>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Einwurf — the Sunday ritual, in the <a class="dv-oid" href="#3a">3a</a> system</span></div>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a><strong style="color:#1a1a1a">Einwurf</strong> — drop zone + recent uploads, then the &lt;60s extraction review checklist (low confidence sorts to top).</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="4a einwurf home" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 0;box-sizing:border-box">
+  <div style="padding:10px 24px 0">
+    <div style="font-size:30px;font-weight:600">Einwurf</div>
+    <div style="font-size:14px;color:rgba(28,26,18,.55);margin-top:4px">Feed this week's class. Done before the kettle boils.</div>
+  </div>
+  <div style="padding:18px 20px 0">
+    <div style="border:2px dashed rgba(28,26,18,.25);border-radius:20px;background:rgba(242,196,0,.06);padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:10px">
+      <svg width="34" height="34" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="#1C1A12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <div style="font-size:17px;font-weight:600">Drop PDF, photo, or notes</div>
+      <div style="font-size:13px;color:rgba(28,26,18,.5);text-align:center">Share-sheet from Files or Photos works too. Whiteboard photos: fill the frame, avoid glare.</div>
+      <div style="margin-top:6px;height:48px;padding:0 26px;border-radius:14px;background:#F2C400;display:flex;align-items:center;font-size:16px;font-weight:600;color:#1C1A12">Choose file</div>
+    </div>
+  </div>
+  <div style="flex:1;padding:22px 20px 100px;display:flex;flex-direction:column;gap:10px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.45)">Recent uploads</div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;border:3px solid #EF7D00;flex:none"></span>
+      <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;white-space:nowrap">Woche 12 · PDF + 1 photo</div><div style="font-size:12.5px;color:rgba(28,26,18,.5);margin-top:2px">23 words · 2 grammar points · 3 themes</div></div>
+      <span style="font-size:12px;font-weight:600;color:#2E7D4F;white-space:nowrap">reviewed ✓</span>
+    </div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+      <span style="width:10px;height:10px;border-radius:50%;background:#fff;border:3px solid #00963F;flex:none"></span>
+      <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;white-space:nowrap">Woche 11 · PDF</div><div style="font-size:12.5px;color:rgba(28,26,18,.5);margin-top:2px">19 words · 1 grammar point · 2 themes</div></div>
+      <span style="font-size:12px;font-weight:600;color:#2E7D4F;white-space:nowrap">reviewed ✓</span>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(250,246,236,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(28,26,18,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="none" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:500">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#1C1A12"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="17" cy="5" r="3" fill="#F2C400"></circle></svg><span style="font-size:10.5px;font-weight:600">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="4a extraction review" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.5);white-space:nowrap">Woche 12 · Review</div>
+    <div style="width:36px"></div>
+  </div>
+  <div style="padding:14px 24px 0">
+    <div style="font-size:24px;font-weight:600">Found 23 words, 2 grammar points, 3 themes.</div>
+    <div style="font-size:13.5px;color:rgba(28,26,18,.55);margin-top:4px">Tap to keep or kill. Long-press to fix. 40 seconds, promise.</div>
+  </div>
+  <div style="flex:1;overflow:hidden;padding:16px 20px 0;display:flex;flex-direction:column;gap:8px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(196,68,42,.4);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;opacity:.6">
+      <span style="width:24px;height:24px;border-radius:8px;border:2px solid rgba(28,26,18,.25);flex:none"></span>
+      <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600;text-decoration:line-through">Fr. Huber</div><div style="font-size:12px;color:#C4442A;margin-top:1px">low confidence — looks like your teacher's name</div></div>
+    </div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px">
+      <span style="width:24px;height:24px;border-radius:8px;background:#F2C400;display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="10" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#1C1A12" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600"><span style="color:#EF7D00">die</span> Umwelt · the environment</div><div style="font-size:12px;color:rgba(28,26,18,.5);margin-top:1px">"Wir müssen die Umwelt schützen."</div></div>
+      <span style="font-size:11px;font-weight:600;color:#00963F;background:rgba(0,150,63,.1);padding:3px 8px;border-radius:6px;white-space:nowrap">seen Woche 8 · boosted</span>
+    </div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px">
+      <span style="width:24px;height:24px;border-radius:8px;background:#F2C400;display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="10" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#1C1A12" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600"><span style="color:#EF7D00">der</span> Klimawandel · climate change</div><div style="font-size:12px;color:rgba(28,26,18,.5);margin-top:1px">plural: — <span style="color:#C28A0D;font-weight:600">· inferred</span></div></div>
+    </div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px">
+      <span style="width:24px;height:24px;border-radius:8px;background:#F2C400;display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="10" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#1C1A12" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600">Konjunktiv II</div><div style="font-size:12px;color:rgba(28,26,18,.5);margin-top:1px">würde + infinitive; hätte/wäre for haben/sein</div></div>
+      <span style="font-size:11px;font-weight:600;color:#E20613;background:rgba(226,6,19,.08);padding:3px 8px;border-radius:6px;white-space:nowrap">grammar</span>
+    </div>
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px">
+      <span style="width:24px;height:24px;border-radius:8px;background:#F2C400;display:flex;align-items:center;justify-content:center;flex:none"><svg width="12" height="10" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#1C1A12" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      <div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:600">wenn-Sätze</div><div style="font-size:12px;color:rgba(28,26,18,.5);margin-top:1px">"Wenn ich mehr Zeit hätte, würde ich mehr reisen."</div></div>
+      <span style="font-size:11px;font-weight:600;color:#E20613;background:rgba(226,6,19,.08);padding:3px 8px;border-radius:6px;white-space:nowrap">grammar</span>
+    </div>
+    <div style="text-align:center;font-size:12.5px;color:rgba(28,26,18,.4);padding-top:2px">+ 19 more, scroll on</div>
+  </div>
+  <div style="padding:12px 20px 0;display:flex;flex-direction:column;gap:8px">
+    <div style="height:58px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#1C1A12">Looks right — build my week</div>
+    <div style="text-align:center;font-size:12.5px;color:rgba(28,26,18,.4)">Sessions generate in the background. Go make tea.</div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "make <a class="dv-oid" href="#3a">3a</a> + <a class="dv-oid" href="#4a">4a</a> an interactive prototype" · "design Bibliothek in this system" · "show the upload-in-progress extraction state"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Merged system — <a class="dv-oid" href="#2b">2b</a> segmented route + <a class="dv-oid" href="#2c">2c</a> Endstation recap</span></div>
+
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a><strong style="color:#1a1a1a">The commute loop</strong> — Heute previews the route → player rides it → Endstation replays it. One line language everywhere.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="3a heute" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(28,26,18,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EDE5D0" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#F2C400" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#1C1A12" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(28,26,18,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(28,26,18,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.45)">Today's route</div>
+      <div style="font-size:17px;font-weight:500;margin-top:6px;line-height:1.4">Konjunktiv II + 12 words from Kapitel 5</div>
+      <svg width="100%" height="16" viewBox="0 0 320 16" style="margin-top:12px">
+        <line x1="8" y1="8" x2="118" y2="8" stroke="#E20613" stroke-width="4"></line>
+        <line x1="118" y1="8" x2="228" y2="8" stroke="#EF7D00" stroke-width="4"></line>
+        <line x1="228" y1="8" x2="312" y2="8" stroke="#00963F" stroke-width="4"></line>
+        <circle cx="8" cy="8" r="4" fill="#fff" stroke="#E20613" stroke-width="2.5"></circle>
+        <circle cx="118" cy="8" r="5" fill="#fff" stroke="#EF7D00" stroke-width="2.5"></circle>
+        <circle cx="228" cy="8" r="5" fill="#fff" stroke="#00963F" stroke-width="2.5"></circle>
+        <rect x="306" y="3" width="10" height="10" rx="2.5" fill="#00963F"></rect>
+      </svg>
+      <div style="display:flex;gap:12px;margin-top:8px;font-size:11.5px;font-weight:600"><span style="color:#E20613">5 · Konjunktiv II</span><span style="color:#EF7D00">4 · Kapitel 5</span><span style="color:#00963F">3 · Review</span></div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#1C1A12">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(250,246,236,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(28,26,18,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#1C1A12"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#F2C400" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="3a player mid" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.5)">Woche 12 · Cloze</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#1C1A12" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="130" y2="10" stroke="#E20613" stroke-width="4"></line>
+      <line x1="130" y1="10" x2="250" y2="10" stroke="#EF7D00" stroke-width="4"></line>
+      <line x1="250" y1="10" x2="340" y2="10" stroke="#00963F" stroke-width="4"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#E20613"></circle><circle cx="40" cy="10" r="4.5" fill="#E20613"></circle><circle cx="70" cy="10" r="4.5" fill="#E20613"></circle><circle cx="100" cy="10" r="4.5" fill="#E20613"></circle>
+      <circle cx="130" cy="10" r="6" fill="#fff" stroke="#EF7D00" stroke-width="3"></circle>
+      <circle cx="160" cy="10" r="7" fill="#fff" stroke="#1C1A12" stroke-width="3.5"></circle>
+      <circle cx="190" cy="10" r="4" fill="#fff" stroke="#EF7D00" stroke-width="2"></circle><circle cx="220" cy="10" r="4" fill="#fff" stroke="#EF7D00" stroke-width="2"></circle>
+      <circle cx="250" cy="10" r="6" fill="#fff" stroke="#00963F" stroke-width="3"></circle>
+      <circle cx="280" cy="10" r="4" fill="#fff" stroke="#00963F" stroke-width="2"></circle><circle cx="310" cy="10" r="4" fill="#fff" stroke="#00963F" stroke-width="2"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#00963F"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(28,26,18,.45)">
+      <span style="font-weight:600;white-space:nowrap">Station 6 / 12</span>
+      <span style="display:flex;gap:10px;white-space:nowrap"><span style="color:#E20613;font-weight:600">— KII</span><span style="color:#EF7D00;font-weight:600">— Kap. 5</span><span style="color:#00963F;font-weight:600">— Review</span></span>
+    </div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45);white-space:nowrap">Fill the gap</span><span style="width:8px;height:8px;border-radius:50%;background:#EF7D00"></span><span style="font-size:12px;font-weight:600;color:#EF7D00;white-space:nowrap">Kapitel 5</span></div>
+    <div style="font-size:33px;line-height:1.3;font-weight:500;text-wrap:pretty">Wir müssen <span style="display:inline-block;min-width:76px;border-bottom:3px solid #F2C400;background:rgba(242,196,0,.12);border-radius:6px 6px 0 0;height:1.15em;vertical-align:-4px"></span> Umwelt schützen.</div>
+    <div style="font-size:13px;color:rgba(28,26,18,.45)">From your material · Woche 12 · Umwelt</div>
+  </div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">der</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">die</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">das</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">den</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="3a endstation" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="padding:10px 28px 0">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45)">Endstation</div>
+    <div style="font-size:30px;font-weight:600;margin-top:4px">That's the ride. <svg width="34" height="25" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:14px;color:rgba(28,26,18,.55);margin-top:4px">12 stations · 10 right · 9 min</div>
+    <svg width="100%" height="16" viewBox="0 0 320 16" style="margin-top:12px">
+      <line x1="8" y1="8" x2="118" y2="8" stroke="#E20613" stroke-width="4"></line>
+      <line x1="118" y1="8" x2="228" y2="8" stroke="#EF7D00" stroke-width="4"></line>
+      <line x1="228" y1="8" x2="312" y2="8" stroke="#00963F" stroke-width="4"></line>
+      <circle cx="8" cy="8" r="3.5" fill="#E20613"></circle><circle cx="35" cy="8" r="3.5" fill="#E20613"></circle><circle cx="62" cy="8" r="3.5" fill="#E20613"></circle><circle cx="89" cy="8" r="3.5" fill="#E20613"></circle>
+      <circle cx="118" cy="8" r="4.5" fill="#fff" stroke="#EF7D00" stroke-width="2.5"></circle>
+      <circle cx="145" cy="8" r="3.5" fill="#EF7D00"></circle><circle cx="172" cy="8" r="3.5" fill="#EF7D00"></circle>
+      <circle cx="199" cy="8" r="4.5" fill="#fff" stroke="#C4442A" stroke-width="2.5"></circle>
+      <circle cx="228" cy="8" r="4.5" fill="#fff" stroke="#00963F" stroke-width="2.5"></circle>
+      <circle cx="255" cy="8" r="3.5" fill="#00963F"></circle><circle cx="282" cy="8" r="3.5" fill="#00963F"></circle>
+      <rect x="306" y="3" width="10" height="10" rx="2.5" fill="#00963F"></rect>
+    </svg>
+  </div>
+  <div style="flex:1;overflow:hidden;padding:16px 28px 0">
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #E20613"></span></span><span style="font-size:16px;font-weight:500;flex:1">würde + Infinitiv</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:20px;background:#E20613"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #E20613"></span></span><span style="font-size:16px;font-weight:500;flex:1">hätte / wäre</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:20px;background:#EF7D00"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #EF7D00"></span></span><span style="font-size:16px;font-weight:500;flex:1">die Umwelt</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:20px;background:#EF7D00"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:rgba(196,68,42,.1);border:3px solid #C4442A"></span></span><span style="font-size:16px;font-weight:500;flex:1;color:#C4442A">trotzdem</span><span style="font-size:12px;color:rgba(28,26,18,.45);white-space:nowrap">rematch scheduled</span></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:20px;background:#00963F"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:3px;background:#00963F"></span></span><span style="font-size:16px;font-weight:500;flex:1">+ 8 more, all clear</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    </div>
+    <div style="background:#1C1A12;color:#F5F0E2;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;margin-top:12px"><strong style="color:#F2C400">One thing worth asking your teacher:</strong> "trotzdem" has beaten you 3 times now.</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;font-size:13.5px;color:rgba(28,26,18,.55)"><span>Class readiness</span><span style="font-weight:600;color:#1C1A12;white-space:nowrap">78% → <span style="color:#2E7D4F">84%</span></span></div>
+  </div>
+  <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:10px">
+    <div style="height:58px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#1C1A12">Fertig</div>
+    <div style="text-align:center;font-size:12.5px;color:rgba(28,26,18,.4)">That's it for today. See you on the ride home.</div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "make <a class="dv-oid" href="#3a">3a</a> an interactive prototype" · "design Einwurf (upload + extraction review) in the <a class="dv-oid" href="#3a">3a</a> system" · "add the answered-wrong state to <a class="dv-oid" href="#3a">3a</a>'s player"</p>
+</section>
+
+<section class="dv-turn" id="t2" style="display: none">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Committing to <a class="dv-oid" href="#1a">1a</a> — Vienna lines as topic coding (U1 red = grammar, U3 orange = new vocab, U4 green = review)</span></div>
+
+<div class="dv-opts">
+
+<!-- ═══════════════ 2a TOPIC AS LINE ═══════════════ -->
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a><strong style="color:#1a1a1a">Topic as line</strong> — the current topic IS the line: red Konjunktiv II ride, Vienna-style white station dots. Yellow stays the brand.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="2a player mid" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="display:flex;align-items:center;gap:8px"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:24px;padding:0 6px;border-radius:6px;background:#E20613;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.02em">KII</span><span style="font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(28,26,18,.5);white-space:nowrap">Konjunktiv II</span></div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#1C1A12" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#E8E0CC" stroke-width="4"></line>
+      <line x1="10" y1="10" x2="100" y2="10" stroke="#E20613" stroke-width="4"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#fff" stroke="#E20613" stroke-width="2.5"></circle><circle cx="40" cy="10" r="4.5" fill="#fff" stroke="#E20613" stroke-width="2.5"></circle><circle cx="70" cy="10" r="4.5" fill="#fff" stroke="#E20613" stroke-width="2.5"></circle>
+      <circle cx="100" cy="10" r="7" fill="#fff" stroke="#1C1A12" stroke-width="3.5"></circle>
+      <circle cx="130" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="160" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="190" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="220" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="250" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="280" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="310" cy="10" r="4" fill="#E2DAC6"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#E2DAC6"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(28,26,18,.45)"><span style="font-weight:600;white-space:nowrap">Station 4 / 12</span><span style="white-space:nowrap">~8 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45)">Fill the gap</div>
+    <div style="font-size:31px;line-height:1.35;font-weight:500;text-wrap:pretty">Wenn ich mehr Zeit hätte, <span style="display:inline-block;min-width:96px;border-bottom:3px solid #F2C400;background:rgba(242,196,0,.12);border-radius:6px 6px 0 0;height:1.15em;vertical-align:-4px"></span> ich mehr reisen.</div>
+    <div style="font-size:13px;color:rgba(28,26,18,.45)">From your material · Woche 12 · Konjunktiv II</div>
+  </div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">würde</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">werde</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">wurde</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">will</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="2a heute" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(28,26,18,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EDE5D0" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#F2C400" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#1C1A12" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(28,26,18,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(28,26,18,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.45)">Today's session</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:22px;padding:0 5px;border-radius:5px;background:#E20613;color:#fff;font-size:11.5px;font-weight:700">KII</span>Konjunktiv II · 5 stations</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:22px;padding:0 5px;border-radius:5px;background:#EF7D00;color:#fff;font-size:11.5px;font-weight:700">K5</span>Kapitel 5 vocab · 4 stations</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500"><span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:22px;padding:0 5px;border-radius:5px;background:#00963F;color:#fff;font-size:11.5px;font-weight:700">R</span>Review from older weeks · 3 stations</div>
+      </div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#1C1A12">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(250,246,236,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(28,26,18,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#1C1A12"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#F2C400" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+<!-- ═══════════════ 2b SEGMENTED ROUTE ═══════════════ -->
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a><strong style="color:#1a1a1a">Segmented route</strong> — one session, one line, colored by topic segment; interchange rings where topics switch.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="2b player mid" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.5)">Woche 12 · Cloze</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#1C1A12" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="130" y2="10" stroke="#E20613" stroke-width="4"></line>
+      <line x1="130" y1="10" x2="250" y2="10" stroke="#EF7D00" stroke-width="4"></line>
+      <line x1="250" y1="10" x2="340" y2="10" stroke="#00963F" stroke-width="4"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#E20613"></circle><circle cx="40" cy="10" r="4.5" fill="#E20613"></circle><circle cx="70" cy="10" r="4.5" fill="#E20613"></circle><circle cx="100" cy="10" r="4.5" fill="#E20613"></circle>
+      <circle cx="130" cy="10" r="6" fill="#fff" stroke="#EF7D00" stroke-width="3"></circle>
+      <circle cx="160" cy="10" r="7" fill="#fff" stroke="#1C1A12" stroke-width="3.5"></circle>
+      <circle cx="190" cy="10" r="4" fill="#fff" stroke="#EF7D00" stroke-width="2"></circle><circle cx="220" cy="10" r="4" fill="#fff" stroke="#EF7D00" stroke-width="2"></circle>
+      <circle cx="250" cy="10" r="6" fill="#fff" stroke="#00963F" stroke-width="3"></circle>
+      <circle cx="280" cy="10" r="4" fill="#fff" stroke="#00963F" stroke-width="2"></circle><circle cx="310" cy="10" r="4" fill="#fff" stroke="#00963F" stroke-width="2"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#00963F"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(28,26,18,.45)">
+      <span style="font-weight:600;white-space:nowrap">Station 6 / 12</span>
+      <span style="display:flex;gap:10px;white-space:nowrap"><span style="color:#E20613;font-weight:600">— KII</span><span style="color:#EF7D00;font-weight:600">— Kap. 5</span><span style="color:#00963F;font-weight:600">— Review</span></span>
+    </div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="display:flex;align-items:center;gap:8px"><span style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45);white-space:nowrap">Fill the gap</span><span style="width:8px;height:8px;border-radius:50%;background:#EF7D00"></span><span style="font-size:12px;font-weight:600;color:#EF7D00;white-space:nowrap">Kapitel 5</span></div>
+    <div style="font-size:33px;line-height:1.3;font-weight:500;text-wrap:pretty">Wir müssen <span style="display:inline-block;min-width:76px;border-bottom:3px solid #F2C400;background:rgba(242,196,0,.12);border-radius:6px 6px 0 0;height:1.15em;vertical-align:-4px"></span> Umwelt schützen.</div>
+    <div style="font-size:13px;color:rgba(28,26,18,.45)">From your material · Woche 12 · Umwelt</div>
+  </div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">der</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">die</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">das</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">den</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="2b heute" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(28,26,18,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EDE5D0" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#F2C400" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#1C1A12" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(28,26,18,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(28,26,18,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.45)">Today's route</div>
+      <div style="font-size:17px;font-weight:500;margin-top:6px;line-height:1.4">Konjunktiv II + 12 words from Kapitel 5</div>
+      <svg width="100%" height="16" viewBox="0 0 320 16" style="margin-top:12px">
+        <line x1="8" y1="8" x2="118" y2="8" stroke="#E20613" stroke-width="4"></line>
+        <line x1="118" y1="8" x2="228" y2="8" stroke="#EF7D00" stroke-width="4"></line>
+        <line x1="228" y1="8" x2="312" y2="8" stroke="#00963F" stroke-width="4"></line>
+        <circle cx="8" cy="8" r="4" fill="#fff" stroke="#E20613" stroke-width="2.5"></circle>
+        <circle cx="118" cy="8" r="5" fill="#fff" stroke="#EF7D00" stroke-width="2.5"></circle>
+        <circle cx="228" cy="8" r="5" fill="#fff" stroke="#00963F" stroke-width="2.5"></circle>
+        <rect x="306" y="3" width="10" height="10" rx="2.5" fill="#00963F"></rect>
+      </svg>
+      <div style="display:flex;gap:12px;margin-top:8px;font-size:11.5px;font-weight:600"><span style="color:#E20613">5 · Konjunktiv II</span><span style="color:#EF7D00">4 · Kapitel 5</span><span style="color:#00963F">3 · Review</span></div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#1C1A12">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(250,246,236,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(28,26,18,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#1C1A12"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#F2C400" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+<!-- ═══════════════ 2c ENDSTATION ═══════════════ -->
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a><strong style="color:#1a1a1a">Endstation</strong> — session-done as a vertical route recap: the ride you just took, station by station.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="2c session done" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="padding:10px 28px 0">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45)">Endstation</div>
+    <div style="font-size:30px;font-weight:600;margin-top:4px">That's the ride. <svg width="34" height="25" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:14px;color:rgba(28,26,18,.55);margin-top:4px">12 stations · 10 right · 9 min</div>
+  </div>
+  <div style="flex:1;overflow:hidden;padding:18px 28px 0">
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #E20613"></span></span><span style="font-size:16px;font-weight:500;flex:1">würde + Infinitiv</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:22px;background:#E20613"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #E20613"></span></span><span style="font-size:16px;font-weight:500;flex:1">hätte / wäre</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:22px;background:#EF7D00"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #EF7D00"></span></span><span style="font-size:16px;font-weight:500;flex:1">die Umwelt</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:22px;background:#EF7D00"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:rgba(196,68,42,.1);border:3px solid #C4442A"></span></span><span style="font-size:16px;font-weight:500;flex:1;color:#C4442A">trotzdem</span><span style="font-size:12px;color:rgba(28,26,18,.45);white-space:nowrap">rematch scheduled</span></div>
+      <div style="display:flex;gap:14px"><span style="width:14px;display:flex;justify-content:center"><span style="width:4px;height:22px;background:#00963F"></span></span></div>
+      <div style="display:flex;align-items:center;gap:14px;min-height:44px"><span style="width:14px;display:flex;justify-content:center"><span style="width:12px;height:12px;border-radius:3px;background:#00963F"></span></span><span style="font-size:16px;font-weight:500;flex:1">+ 8 more, all clear</span><svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+    </div>
+    <div style="background:#1C1A12;color:#F5F0E2;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;margin-top:14px"><strong style="color:#F2C400">One thing worth asking your teacher:</strong> "trotzdem" has beaten you 3 times now.</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:13.5px;color:rgba(28,26,18,.55)"><span>Class readiness</span><span style="font-weight:600;color:#1C1A12;white-space:nowrap">78% → <span style="color:#2E7D4F">84%</span></span></div>
+  </div>
+  <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:10px">
+    <div style="height:58px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#1C1A12">Fertig</div>
+    <div style="text-align:center;font-size:12.5px;color:rgba(28,26,18,.4)">That's it for today. See you on the ride home.</div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "merge <a class="dv-oid" href="#2b">2b</a>'s segmented line into <a class="dv-oid" href="#2a">2a</a>'s player" · "design Einwurf (upload + review checklist) in this direction" · "make the winner an interactive prototype"</p>
+</section>
+
+<section class="dv-turn" id="t1" style="display: none">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Accent directions — player (mid + wrong) and Heute</span></div>
+
+<div class="dv-opts">
+
+<!-- ═══════════════ 1a SIGNAL YELLOW ═══════════════ -->
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a><strong style="color:#1a1a1a">Signal</strong> — U-Bahn signal yellow #F2C400, ink on yellow (BVG energy). Cloze exercise.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1a player mid" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.5)">Woche 12 · Cloze</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#1C1A12" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#E8E0CC" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="100" y2="10" stroke="#F2C400" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#F2C400"></circle><circle cx="40" cy="10" r="4.5" fill="#F2C400"></circle><circle cx="70" cy="10" r="4.5" fill="#F2C400"></circle>
+      <circle cx="100" cy="10" r="6.5" fill="#FAF6EC" stroke="#1C1A12" stroke-width="3"></circle>
+      <circle cx="130" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="160" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="190" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="220" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="250" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="280" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="310" cy="10" r="4" fill="#E2DAC6"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#E2DAC6"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(28,26,18,.45)"><span style="font-weight:600;white-space:nowrap">Station 4 / 12</span><span style="white-space:nowrap">~8 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45)">Fill the gap</div>
+    <div style="font-size:33px;line-height:1.3;font-weight:500;text-wrap:pretty">Wir müssen <span style="display:inline-block;min-width:76px;border-bottom:3px solid #F2C400;background:rgba(242,196,0,.12);border-radius:6px 6px 0 0;height:1.15em;vertical-align:-4px"></span> Umwelt schützen.</div>
+    <div style="font-size:13px;color:rgba(28,26,18,.45)">From your material · Woche 12 · Umwelt</div>
+  </div>
+  <div style="padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">der</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">die</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">das</div>
+    <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500">den</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1a player wrong" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#1C1A12" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.5)">Woche 12 · Cloze</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(28,26,18,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#1C1A12" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#E8E0CC" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="100" y2="10" stroke="#F2C400" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#F2C400"></circle><circle cx="40" cy="10" r="4.5" fill="#F2C400"></circle><circle cx="70" cy="10" r="4.5" fill="#F2C400"></circle>
+      <circle cx="100" cy="10" r="6.5" fill="#FAF6EC" stroke="#1C1A12" stroke-width="3"></circle>
+      <circle cx="130" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="160" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="190" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="220" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="250" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="280" cy="10" r="4" fill="#E2DAC6"></circle><circle cx="310" cy="10" r="4" fill="#E2DAC6"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#E2DAC6"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(28,26,18,.45)"><span style="font-weight:600;white-space:nowrap">Station 4 / 12</span><span style="white-space:nowrap">~8 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,26,18,.45)">Fill the gap</div>
+    <div style="font-size:33px;line-height:1.3;font-weight:500;text-wrap:pretty">Wir müssen <span style="border-bottom:3px solid #2E7D4F;font-weight:600">die</span> Umwelt schützen.</div>
+    <div style="background:#1C1A12;color:#F5F0E2;border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.5"><strong style="color:#F2C400">die Umwelt</strong> — feminine; accusative feminine keeps "die".<div style="margin-top:6px;font-size:12px;color:rgba(245,240,226,.55)">Scheduled for a rematch <svg width="22" height="16" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#F5F0E2" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#F5F0E2" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><circle cx="8" cy="16.5" r="1.6" fill="#F5F0E2"></circle><circle cx="18" cy="16.5" r="1.6" fill="#F5F0E2"></circle></svg></div></div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;opacity:.45">der</div>
+      <div style="height:62px;border-radius:16px;background:rgba(46,125,79,.1);border:2px solid #2E7D4F;display:flex;align-items:center;justify-content:center;gap:8px;font-size:22px;font-weight:600;color:#2E7D4F">die <svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="height:62px;border-radius:16px;background:#FFFDF6;border:1.5px solid rgba(28,26,18,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;opacity:.45">das</div>
+      <div style="height:62px;border-radius:16px;background:rgba(196,68,42,.08);border:2px solid #C4442A;display:flex;align-items:center;justify-content:center;gap:8px;font-size:22px;font-weight:500;color:#C4442A;text-decoration:line-through">den</div>
+    </div>
+    <div style="height:58px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#1C1A12">Weiter →</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1a heute" style="height:100%;display:flex;flex-direction:column;background:#FAF6EC;color:#1C1A12;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(28,26,18,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EDE5D0" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#F2C400" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#1C1A12" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(28,26,18,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(28,26,18,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(28,26,18,.12);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,26,18,.45)">Today's session</div>
+      <div style="font-size:17px;font-weight:500;margin-top:6px;line-height:1.4">Konjunktiv II + 12 words from Kapitel 5</div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#F2C400;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#1C1A12">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(250,246,236,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(28,26,18,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#1C1A12"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#F2C400" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(28,26,18,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+<!-- ═══════════════ 1b MUSTARD ═══════════════ -->
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a><strong style="color:#1a1a1a">Mustard</strong> — deeper BVG-ish ochre #BE8E1A, warmer + more editorial. Scramble + MC grammar.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1b player mid scramble" style="height:100%;display:flex;flex-direction:column;background:#FBF7EE;color:#221D10;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(34,29,16,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#221D10" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(34,29,16,.5)">Woche 12 · Satzbau</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(34,29,16,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#221D10" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#EAE1CB" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="190" y2="10" stroke="#BE8E1A" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="40" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="70" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="100" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="130" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="160" cy="10" r="4.5" fill="#BE8E1A"></circle>
+      <circle cx="190" cy="10" r="6.5" fill="#FBF7EE" stroke="#221D10" stroke-width="3"></circle>
+      <circle cx="220" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="250" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="280" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="310" cy="10" r="4" fill="#E4DBC4"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#E4DBC4"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(34,29,16,.45)"><span style="font-weight:600;white-space:nowrap">Station 7 / 12</span><span style="white-space:nowrap">~5 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:16px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(34,29,16,.45)">Build the sentence</div>
+    <div style="font-size:18px;color:rgba(34,29,16,.6);line-height:1.5">"I would like to travel more."</div>
+    <div style="min-height:120px;border-radius:16px;border:1.5px dashed rgba(34,29,16,.22);padding:14px;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start">
+      <span style="height:46px;padding:0 18px;border-radius:12px;background:#BE8E1A;color:#FFFDF4;display:inline-flex;align-items:center;font-size:19px;font-weight:500">Ich</span>
+      <span style="height:46px;padding:0 18px;border-radius:12px;background:#BE8E1A;color:#FFFDF4;display:inline-flex;align-items:center;font-size:19px;font-weight:500">würde</span>
+      <span style="height:46px;width:64px;border-radius:12px;border:1.5px dashed rgba(34,29,16,.25)"></span>
+    </div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+      <span style="height:54px;padding:0 22px;border-radius:14px;background:#FFFDF6;border:1.5px solid rgba(34,29,16,.16);display:inline-flex;align-items:center;font-size:20px;font-weight:500">reisen</span>
+      <span style="height:54px;padding:0 22px;border-radius:14px;background:#FFFDF6;border:1.5px solid rgba(34,29,16,.16);display:inline-flex;align-items:center;font-size:20px;font-weight:500">gern</span>
+      <span style="height:54px;padding:0 22px;border-radius:14px;background:#FFFDF6;border:1.5px solid rgba(34,29,16,.16);display:inline-flex;align-items:center;font-size:20px;font-weight:500">mehr</span>
+    </div>
+    <div style="display:flex;justify-content:center"><span style="font-size:13px;color:rgba(34,29,16,.45);display:inline-flex;align-items:center;gap:6px"><svg width="13" height="13" viewBox="0 0 13 13"><path d="M11 3H4L1.5 6.5 4 10h7a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0011 3z M8.5 5l-3 3M5.5 5l3 3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>tap a placed word to undo</span></div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1b player wrong MC" style="height:100%;display:flex;flex-direction:column;background:#FBF7EE;color:#221D10;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(34,29,16,.16);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#221D10" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(34,29,16,.5)">Woche 12 · Grammatik</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(34,29,16,.16);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#221D10" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#EAE1CB" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="190" y2="10" stroke="#BE8E1A" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="40" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="70" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="100" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="130" cy="10" r="4.5" fill="#BE8E1A"></circle><circle cx="160" cy="10" r="4.5" fill="#BE8E1A"></circle>
+      <circle cx="190" cy="10" r="6.5" fill="#FBF7EE" stroke="#221D10" stroke-width="3"></circle>
+      <circle cx="220" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="250" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="280" cy="10" r="4" fill="#E4DBC4"></circle><circle cx="310" cy="10" r="4" fill="#E4DBC4"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#E4DBC4"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(34,29,16,.45)"><span style="font-weight:600;white-space:nowrap">Station 7 / 12</span><span style="white-space:nowrap">~5 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:16px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(34,29,16,.45)">Pick the right form</div>
+    <div style="font-size:27px;line-height:1.4;font-weight:500;text-wrap:pretty">Wenn ich mehr Zeit <span style="border-bottom:3px solid #2E7D4F;font-weight:600">hätte</span>, würde ich mehr reisen.</div>
+    <div style="background:#221D10;color:#F6F1E3;border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.5"><strong style="color:#E4B33C">Konjunktiv II</strong> — "hätte" for hypotheticals. "hatte" is plain past: a fact, not a wish.<div style="margin-top:6px;font-size:12px;color:rgba(246,241,227,.55)">Scheduled for a rematch <svg width="22" height="16" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#F5F0E2" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#F5F0E2" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><circle cx="8" cy="16.5" r="1.6" fill="#F5F0E2"></circle><circle cx="18" cy="16.5" r="1.6" fill="#F5F0E2"></circle></svg></div></div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:10px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="height:58px;border-radius:14px;background:rgba(46,125,79,.1);border:2px solid #2E7D4F;display:flex;align-items:center;justify-content:center;gap:8px;font-size:20px;font-weight:600;color:#2E7D4F">hätte <svg width="14" height="11" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#2E7D4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="height:58px;border-radius:14px;background:rgba(196,68,42,.08);border:2px solid #C4442A;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;color:#C4442A;text-decoration:line-through">hatte</div>
+      <div style="height:58px;border-radius:14px;background:#FFFDF6;border:1.5px solid rgba(34,29,16,.14);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;opacity:.45">habe</div>
+      <div style="height:58px;border-radius:14px;background:#FFFDF6;border:1.5px solid rgba(34,29,16,.14);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;opacity:.45">wäre</div>
+    </div>
+    <div style="height:58px;border-radius:16px;background:#BE8E1A;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#FFFDF4">Weiter →</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div data-screen-label="1b heute" style="height:100%;display:flex;flex-direction:column;background:#FBF7EE;color:#221D10;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(34,29,16,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EDE4CE" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#BE8E1A" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#221D10" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(34,29,16,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(34,29,16,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#FFFDF6;border:1.5px solid rgba(34,29,16,.12);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(34,29,16,.45)">Today's session</div>
+      <div style="font-size:17px;font-weight:500;margin-top:6px;line-height:1.4">Konjunktiv II + 12 words from Kapitel 5</div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#BE8E1A;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#FFFDF4">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(251,247,238,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(34,29,16,.08);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#221D10"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#BE8E1A" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(34,29,16,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(34,29,16,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(34,29,16,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+<!-- ═══════════════ 1c NIGHT RIDE ═══════════════ -->
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a><strong style="color:#1a1a1a">Night ride</strong> — ink-dominant surfaces, marigold #EEA83B accents. Recall card + cloze wrong.</div>
+<div class="dv-row">
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div data-screen-label="1c player recall" style="height:100%;display:flex;flex-direction:column;background:#191712;color:#F2ECDC;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(242,236,220,.2);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#F2ECDC" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,236,220,.5)">Woche 12 · Recall</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(242,236,220,.2);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#F2ECDC" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#37332A" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="100" y2="10" stroke="#EEA83B" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#EEA83B"></circle><circle cx="40" cy="10" r="4.5" fill="#EEA83B"></circle><circle cx="70" cy="10" r="4.5" fill="#EEA83B"></circle>
+      <circle cx="100" cy="10" r="6.5" fill="#191712" stroke="#EEA83B" stroke-width="3"></circle>
+      <circle cx="130" cy="10" r="4" fill="#37332A"></circle><circle cx="160" cy="10" r="4" fill="#37332A"></circle><circle cx="190" cy="10" r="4" fill="#37332A"></circle><circle cx="220" cy="10" r="4" fill="#37332A"></circle><circle cx="250" cy="10" r="4" fill="#37332A"></circle><circle cx="280" cy="10" r="4" fill="#37332A"></circle><circle cx="310" cy="10" r="4" fill="#37332A"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#37332A"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(242,236,220,.45)"><span style="font-weight:600;white-space:nowrap">Station 4 / 12</span><span style="white-space:nowrap">~8 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,236,220,.45)">Recall · DE → EN</div>
+    <div style="font-size:46px;font-weight:600;letter-spacing:-.01em"><span style="color:#EEA83B">die</span> Umwelt</div>
+    <div style="font-size:17px;line-height:1.5;color:rgba(242,236,220,.6)">"Wir müssen die Umwelt schützen."</div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:12px">
+    <div style="height:60px;border-radius:16px;background:#EEA83B;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#191712">Reveal</div>
+    <div style="text-align:center;font-size:12.5px;color:rgba(242,236,220,.4)">then grade yourself — no keyboard, no judgement</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div data-screen-label="1c player wrong" style="height:100%;display:flex;flex-direction:column;background:#191712;color:#F2ECDC;padding:70px 0 46px;box-sizing:border-box">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 20px 0">
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(242,236,220,.2);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#F2ECDC" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+    <div style="font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,236,220,.5)">Woche 12 · Cloze</div>
+    <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(242,236,220,.2);display:flex;align-items:center;justify-content:center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M3 2v10M9 2v10" stroke="#F2ECDC" stroke-width="2.2" stroke-linecap="round"></path></svg></div>
+  </div>
+  <div style="padding:20px 26px 0">
+    <svg width="100%" height="20" viewBox="0 0 350 20">
+      <line x1="10" y1="10" x2="340" y2="10" stroke="#37332A" stroke-width="3"></line>
+      <line x1="10" y1="10" x2="130" y2="10" stroke="#EEA83B" stroke-width="3"></line>
+      <circle cx="10" cy="10" r="4.5" fill="#EEA83B"></circle><circle cx="40" cy="10" r="4.5" fill="#EEA83B"></circle><circle cx="70" cy="10" r="4.5" fill="#EEA83B"></circle><circle cx="100" cy="10" r="4.5" fill="#EEA83B"></circle>
+      <circle cx="130" cy="10" r="6.5" fill="#191712" stroke="#EEA83B" stroke-width="3"></circle>
+      <circle cx="160" cy="10" r="4" fill="#37332A"></circle><circle cx="190" cy="10" r="4" fill="#37332A"></circle><circle cx="220" cy="10" r="4" fill="#37332A"></circle><circle cx="250" cy="10" r="4" fill="#37332A"></circle><circle cx="280" cy="10" r="4" fill="#37332A"></circle><circle cx="310" cy="10" r="4" fill="#37332A"></circle>
+      <rect x="335" y="5" width="10" height="10" rx="2.5" fill="#37332A"></rect>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:rgba(242,236,220,.45)"><span style="font-weight:600;white-space:nowrap">Station 5 / 12</span><span style="white-space:nowrap">~7 min left</span></div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,236,220,.45)">Fill the gap</div>
+    <div style="font-size:33px;line-height:1.3;font-weight:500;text-wrap:pretty">Wir müssen <span style="border-bottom:3px solid #5FA97C;font-weight:600;color:#8FCBA6">die</span> Umwelt schützen.</div>
+    <div style="background:#23201A;border:1px solid rgba(242,236,220,.1);border-radius:14px;padding:14px 16px;font-size:14.5px;line-height:1.5;color:#F2ECDC"><strong style="color:#EEA83B">die Umwelt</strong> — feminine; accusative feminine keeps "die".<div style="margin-top:6px;font-size:12px;color:rgba(242,236,220,.5)">Scheduled for a rematch <svg width="22" height="16" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#F5F0E2" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#F5F0E2" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#1C1A12" stroke="none"></rect><circle cx="8" cy="16.5" r="1.6" fill="#F5F0E2"></circle><circle cx="18" cy="16.5" r="1.6" fill="#F5F0E2"></circle></svg></div></div>
+  </div>
+  <div style="padding:0 20px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="height:62px;border-radius:16px;background:#23201A;border:1.5px solid rgba(242,236,220,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;opacity:.45">der</div>
+      <div style="height:62px;border-radius:16px;background:rgba(95,169,124,.14);border:2px solid #5FA97C;display:flex;align-items:center;justify-content:center;gap:8px;font-size:22px;font-weight:600;color:#8FCBA6">die <svg width="15" height="12" viewBox="0 0 15 12"><path d="M1.5 6.5l4 4L13.5 1.5" stroke="#8FCBA6" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <div style="height:62px;border-radius:16px;background:#23201A;border:1.5px solid rgba(242,236,220,.14);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;opacity:.45">das</div>
+      <div style="height:62px;border-radius:16px;background:rgba(214,106,79,.12);border:2px solid #D66A4F;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;color:#E5907A;text-decoration:line-through">den</div>
+    </div>
+    <div style="height:58px;border-radius:16px;background:#EEA83B;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#191712">Weiter →</div>
+  </div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div data-screen-label="1c heute" style="height:100%;display:flex;flex-direction:column;background:#191712;color:#F2ECDC;padding:70px 0 0;box-sizing:border-box">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 24px 0">
+    <div style="font-size:20px;font-weight:600;letter-spacing:-.01em;white-space:nowrap">pendeln <svg width="26" height="19" viewBox="0 0 26 19" style="vertical-align:-3px"><path d="M9 3.5L12 1M15 3.5L12 1" stroke="#1C1A12" stroke-width="1.3" stroke-linecap="round" fill="none"></path><rect x="3" y="3.5" width="20" height="11" rx="2.5" fill="#F2C400" stroke="#1C1A12" stroke-width="1.5"></rect><rect x="6" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><rect x="15" y="6" width="5" height="4" rx="1" fill="#FAF6EC" stroke="#1C1A12" stroke-width="1.1"></rect><circle cx="8" cy="16.5" r="1.6" fill="#1C1A12"></circle><circle cx="18" cy="16.5" r="1.6" fill="#1C1A12"></circle></svg></div>
+    <div style="font-size:13px;color:rgba(242,236,220,.5)">Montag · 6 Juli</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 24px">
+    <svg width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#2E2B23" stroke-width="11"></circle>
+      <circle cx="75" cy="75" r="62" fill="none" stroke="#EEA83B" stroke-width="11" stroke-linecap="round" stroke-dasharray="327 390" transform="rotate(-90 75 75)"></circle>
+      <text x="75" y="72" text-anchor="middle" font-size="34" font-weight="600" fill="#F2ECDC" font-family="'General Sans',sans-serif">84%</text>
+      <text x="75" y="94" text-anchor="middle" font-size="11" fill="rgba(242,236,220,.5)" font-family="'General Sans',sans-serif">class readiness</text>
+    </svg>
+    <div style="font-size:13.5px;color:rgba(242,236,220,.55);text-align:center;max-width:260px;line-height:1.5">Wednesday's class: mostly ready. "trotzdem" is still winning.</div>
+  </div>
+  <div style="padding:0 20px 100px;display:flex;flex-direction:column;gap:12px">
+    <div style="background:#23201A;border:1px solid rgba(242,236,220,.1);border-radius:20px;padding:18px 20px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,236,220,.45)">Today's session</div>
+      <div style="font-size:17px;font-weight:500;margin-top:6px;line-height:1.4">Konjunktiv II + 12 words from Kapitel 5</div>
+      <div style="margin-top:14px;height:60px;border-radius:16px;background:#EEA83B;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:19px;font-weight:600;color:#191712">Start <span style="font-size:14px;font-weight:500">12 min · offline ✓</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:84px;background:rgba(25,23,18,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(242,236,220,.1);display:flex;justify-content:space-around;align-items:flex-start;padding-top:12px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:#F2ECDC"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="11" cy="11" r="2.6" fill="#EEA83B" stroke="currentColor" stroke-width="1.4"></circle></svg><span style="font-size:10.5px;font-weight:600">Heute</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(242,236,220,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 4h11a3 3 0 013 3v11H7a3 3 0 01-3-3V4z M4 4v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Bibliothek</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(242,236,220,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 3v9m0 0l-3.5-3.5M11 12l3.5-3.5M4 14v2a3 3 0 003 3h8a3 3 0 003-3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size:10.5px;font-weight:500">Einwurf</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(242,236,220,.4)"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="7.5" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle><path d="M4.5 18.5c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg><span style="font-size:10.5px;font-weight:500">Ich</span></div>
+  </div>
+</div>
+</x-import>
+
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "commit to <a class="dv-oid" href="#1a">1a</a> and design the session-done screen" · "make the transit line more committed, like <a class="dv-oid" href="#1b">1b</a> but the line threads the whole player" · "mix: <a class="dv-oid" href="#1a">1a</a> palette with <a class="dv-oid" href="#1c">1c</a> as a night mode"</p>
+</section>
+
+</x-dc>
+</body>
+</html>
