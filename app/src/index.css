@@ -1,0 +1,353 @@
+/* pendeln — transit-system clarity: warm paper, ink, one signal accent. */
+
+:root {
+  --paper: #faf6ec;
+  --paper-raised: #fffdf6;
+  --paper-sunken: #f2ecdc;
+  --ink: #1c1a12;
+  --ink-soft: #37332a;
+  --ink-faint: #8a8474;
+  --line: #e2dac6;
+  --signal: #f2c400; /* the one accent — U-Bahn yellow */
+  --signal-ink: #221d10;
+  --go: #00963f;
+  --stop: #e20613;
+  --warn: #ef7d00;
+  --radius: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "General Sans", system-ui, -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom));
+}
+
+button {
+  font: inherit;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── shared ── */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.brand .tram {
+  margin-right: 6px;
+}
+
+.btn-primary {
+  background: var(--signal);
+  color: var(--signal-ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 16px 24px;
+  border-radius: var(--radius);
+  width: 100%;
+  transition: transform 0.06s ease;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-quiet {
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+/* ── login ── */
+
+.login {
+  justify-content: center;
+  text-align: center;
+  gap: 28px;
+}
+.login h1 {
+  font-size: 2.6rem;
+  letter-spacing: -0.03em;
+}
+.login p {
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--paper-raised);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 15px 24px;
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+/* ── heute ── */
+
+.stat-row {
+  display: flex;
+  gap: 12px;
+}
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 14px 8px;
+}
+.stat .n {
+  font-size: 1.7rem;
+  font-weight: 700;
+  display: block;
+}
+.stat .l {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.week-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.week-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+.week-item .themes {
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.minutes-picker {
+  display: flex;
+  gap: 10px;
+}
+.minutes-picker button {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--paper-sunken);
+  color: var(--ink-soft);
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+.minutes-picker button.on {
+  background: var(--paper-raised);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* ── session: the line ── */
+
+.line-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 8px 2px;
+}
+.line-track .seg {
+  flex: 1;
+  height: 3px;
+  background: var(--line);
+}
+.line-track .seg.done {
+  background: var(--signal);
+}
+.line-track .station {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+}
+.line-track .station.done {
+  background: var(--signal);
+  border-color: var(--signal);
+}
+.line-track .station.now {
+  border-color: var(--ink);
+  transform: scale(1.3);
+}
+
+.exercise {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+}
+.ex-type {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+.ex-prompt {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.ex-prompt .gap {
+  color: var(--warn);
+  font-weight: 700;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.opt {
+  background: var(--paper-raised);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--ink);
+  transition: border-color 0.1s;
+}
+.opt.right {
+  border-color: var(--go);
+  background: #eaf5ee;
+}
+.opt.wrong {
+  border-color: var(--stop);
+  background: #fdeeee;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  background: var(--paper-raised);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 13px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.chip:disabled {
+  opacity: 0.25;
+}
+.built {
+  min-height: 3.2em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 6px;
+}
+
+.explain {
+  border-left: 3px solid var(--signal);
+  padding: 10px 14px;
+  background: var(--paper-sunken);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.grade-row {
+  display: flex;
+  gap: 10px;
+}
+.grade-row button {
+  flex: 1;
+  padding: 14px 8px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.g-fail {
+  background: #fdeeee;
+  color: var(--stop);
+}
+.g-hard {
+  background: #fdf3e6;
+  color: var(--warn);
+}
+.g-good {
+  background: #eaf5ee;
+  color: var(--go);
+}
+
+/* ── endstation ── */
+
+.done-screen {
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+}
+.done-screen h2 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+.done-screen .score {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.offline-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}

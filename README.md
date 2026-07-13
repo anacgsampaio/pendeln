@@ -36,7 +36,7 @@ Everything is in [`docs/`](docs/), written to be picked up and continued by huma
 
 ## Status
 
-📍 **Phase 1 — the pipeline works.** [`pipeline/`](pipeline/) has the working CLI: feed it course notes, slides (PDF) or a whiteboard photo, review the extraction in 60 seconds, and it generates validated exercise JSON into an item bank with real spaced repetition. Sessions assemble offline. Design explorations live in [`design/`](design/). Next: dogfood with real Woche 1 material, then the Expo app.
+📍 **Phase 1.5 — pipeline + web app.** [`pipeline/`](pipeline/) has the working CLI: feed it course notes, slides (PDF) or a whiteboard photo, review the extraction in 60 seconds, and it generates validated exercise JSON into an item bank with real spaced repetition. LLM calls run through headless Claude Code on a Claude subscription — no API key needed. [`app/`](app/) is the mobile-first PWA (React + Vite + Supabase): Google SSO, offline sessions from a local cache, SRS synced to Postgres. The Sunday ritual runs on the laptop and pushes to the cloud (`pipeline/scripts/push-bank.ts`); the phone is purely the practice player. Design explorations live in [`design/`](design/).
 
 ## Who's behind this
 

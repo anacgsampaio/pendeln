@@ -1,30 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { Exercise, GrammarPoint, VocabItem } from "./schema.ts";
-import { newSrsState, type SrsState } from "./srs.ts";
+import type { GrammarPoint, VocabItem } from "./schema.ts";
+import { newSrsState } from "./srs.ts";
+import type { Bank, BankItem } from "./model.ts";
 
 /**
  * The item bank. JSON file for the CLI (which conveniently satisfies R10:
- * all user data exportable as JSON); the Expo app swaps this for SQLite
- * behind the same shape.
+ * all user data exportable as JSON); the app reads the same shape from
+ * Supabase. Types live in model.ts (browser-safe).
  */
 
-export type BankItem = {
-  id: string;
-  kind: "vocab" | "grammar";
-  week: string;
-  vocab?: VocabItem;
-  grammar?: GrammarPoint;
-  exercises: Exercise[];
-  srs: SrsState;
-  /** failures in the last 14 days — ≥2 marks a weak spot */
-  recentFails: number;
-};
-
-export type Bank = {
-  weeks: { label: string; ingestedAt: string; themes: string[] }[];
-  items: BankItem[];
-};
+export type { Bank, BankItem } from "./model.ts";
 
 const BANK_PATH = process.env.PENDELN_BANK ?? path.join(process.cwd(), "bank.json");
 

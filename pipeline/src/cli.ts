@@ -1,3 +1,4 @@
+import "./env.ts";
 import readline from "node:readline/promises";
 import { stdin, stdout } from "node:process";
 import { extractFromFile } from "./extract.ts";

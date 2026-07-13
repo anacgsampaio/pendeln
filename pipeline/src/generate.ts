@@ -1,10 +1,6 @@
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { ExerciseBatchSchema, validateExercise, type Exercise } from "./schema.ts";
 import type { BankItem } from "./bank.ts";
-import { MODEL } from "./extract.ts";
-
-const client = new Anthropic();
+import { structuredCall } from "./llm.ts";
 
 const GENERATION_PROMPT = `You are the exercise-generation stage of pendeln, a personal German learning app used on a commute: one thumb, standing up, no audio, no typing.
 
@@ -26,18 +22,11 @@ function describeItem(item: BankItem): string {
 }
 
 async function generateBatch(items: BankItem[]): Promise<Exercise[]> {
-  const response = await client.messages.parse({
-    model: MODEL,
-    max_tokens: 16000,
-    messages: [
-      {
-        role: "user",
-        content: `${GENERATION_PROMPT}\n\nITEMS:\n\n${items.map(describeItem).join("\n\n")}`,
-      },
-    ],
-    output_config: { format: zodOutputFormat(ExerciseBatchSchema) },
-  });
-  return response.parsed_output?.exercises ?? [];
+  const batch = await structuredCall(
+    ExerciseBatchSchema,
+    `${GENERATION_PROMPT}\n\nITEMS:\n\n${items.map(describeItem).join("\n\n")}`,
+  );
+  return batch.exercises;
 }
 
 /**

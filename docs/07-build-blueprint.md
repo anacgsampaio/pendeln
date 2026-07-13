@@ -44,7 +44,8 @@ The CLI is the whole product minus the UI. It exists to answer the only question
 
 ```bash
 cd pipeline && npm install
-export ANTHROPIC_API_KEY=...        # or `ant auth login`
+# LLM calls go through headless Claude Code (`claude -p`) on Ana's subscription —
+# no separate API key. src/llm.ts is the seam if a serverless/API-key backend is ever needed.
 
 # Sunday ritual
 npx pendeln ingest fixtures/woche-12-notes.md --week "Woche 12"

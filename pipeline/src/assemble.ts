@@ -1,4 +1,4 @@
-import type { Bank, BankItem } from "./bank.ts";
+import type { Bank, BankItem } from "./model.ts";
 import type { Exercise } from "./schema.ts";
 import { isDue } from "./srs.ts";
 
