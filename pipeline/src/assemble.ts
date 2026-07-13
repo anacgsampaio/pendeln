@@ -16,6 +16,39 @@ const SECONDS_PER_TYPE: Record<Exercise["type"], number> = {
 
 export type SessionSlot = { item: BankItem; exercise: Exercise };
 
+/**
+ * Stage-aware exercise choice: fresh items start with recognition (recall/MC),
+ * maturing items graduate to production (cloze, then scramble). Within a stage,
+ * prefer whichever type the session has seen least — no more flashcard walls.
+ */
+const STAGE_PREFERENCE: Record<"new" | "learning" | "mature", Exercise["type"][]> = {
+  new: ["mc_grammar", "cloze", "recall", "scramble"],
+  learning: ["cloze", "scramble", "mc_grammar", "recall"],
+  mature: ["scramble", "cloze", "mc_grammar", "recall"],
+};
+
+function pickExercise(
+  item: BankItem,
+  typeCounts: Record<Exercise["type"], number>,
+  used: Set<Exercise>,
+): Exercise | undefined {
+  const candidates = item.exercises.filter((e) => !used.has(e));
+  if (candidates.length === 0) return undefined;
+  const stage = item.srs.reps <= 1 ? "new" : item.srs.reps <= 3 ? "learning" : "mature";
+  const pref = STAGE_PREFERENCE[stage];
+  let best = candidates[0];
+  let bestScore = -Infinity;
+  for (const ex of candidates) {
+    const prefIdx = pref.indexOf(ex.type);
+    const score = (pref.length - prefIdx) * 2 - typeCounts[ex.type];
+    if (score > bestScore) {
+      bestScore = score;
+      best = ex;
+    }
+  }
+  return best;
+}
+
 export function assembleSession(bank: Bank, minutes: number, now = new Date()): SessionSlot[] {
   const budget = minutes * 60;
   const newestWeek = bank.weeks.at(-1)?.label;
@@ -29,6 +62,7 @@ export function assembleSession(bank: Bank, minutes: number, now = new Date()): 
   const targets = { fresh: budget * 0.5, due: budget * 0.35, weak: budget * 0.15 };
   const slots: SessionSlot[] = [];
   const usedExercises = new Set<Exercise>();
+  const typeCounts: Record<Exercise["type"], number> = { recall: 0, cloze: 0, scramble: 0, mc_grammar: 0 };
 
   const fill = (pool: BankItem[], target: number) => {
     let spent = 0;
@@ -38,9 +72,10 @@ export function assembleSession(bank: Bank, minutes: number, now = new Date()): 
       let progressed = false;
       for (const item of pool) {
         if (spent >= target) break;
-        const ex = item.exercises.find((e) => !usedExercises.has(e));
+        const ex = pickExercise(item, typeCounts, usedExercises);
         if (!ex) continue;
         usedExercises.add(ex);
+        typeCounts[ex.type] += 1;
         slots.push({ item, exercise: ex });
         spent += SECONDS_PER_TYPE[ex.type];
         progressed = true;
