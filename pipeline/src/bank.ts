@@ -51,7 +51,9 @@ export function mergeWeek(
     if (hit) {
       hit.srs.due = new Date().toISOString(); // boost
     } else {
-      fresh.push({ id, kind: "vocab", week, vocab: v, exercises: [], srs: newSrsState(), recentFails: 0 });
+      const item: BankItem = { id, kind: "vocab", week, vocab: v, exercises: [], srs: newSrsState(), recentFails: 0 };
+      existing.set(id, item); // same lemma twice in one extraction (sie/Sie) must not duplicate
+      fresh.push(item);
     }
   }
   for (const g of grammar) {
@@ -60,7 +62,9 @@ export function mergeWeek(
     if (hit) {
       hit.srs.due = new Date().toISOString();
     } else {
-      fresh.push({ id, kind: "grammar", week, grammar: g, exercises: [], srs: newSrsState(), recentFails: 0 });
+      const item: BankItem = { id, kind: "grammar", week, grammar: g, exercises: [], srs: newSrsState(), recentFails: 0 };
+      existing.set(id, item);
+      fresh.push(item);
     }
   }
 

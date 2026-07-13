@@ -48,18 +48,19 @@ const { error: wErr } = await supabase.from("weeks").upsert(
 );
 if (wErr) throw wErr;
 
-// don't clobber SRS state the app already advanced: keep cloud srs for existing items
+// don't clobber SRS state the app already advanced: keep cloud srs for existing
+// items, but always push content (vocab/grammar/exercises) so regeneration syncs
 const { data: existing, error: eErr } = await supabase
   .from("items")
-  .select("id")
+  .select("id, srs, recent_fails")
   .eq("user_id", uid);
 if (eErr) throw eErr;
-const known = new Set((existing ?? []).map((r) => r.id));
+const cloud = new Map((existing ?? []).map((r) => [r.id, r]));
 
-const fresh = bank.items.filter((i) => !known.has(i.id));
-if (fresh.length > 0) {
-  const { error: iErr } = await supabase.from("items").upsert(
-    fresh.map((i) => ({
+const { error: iErr } = await supabase.from("items").upsert(
+  bank.items.map((i) => {
+    const hit = cloud.get(i.id);
+    return {
       user_id: uid,
       id: i.id,
       kind: i.kind,
@@ -67,10 +68,11 @@ if (fresh.length > 0) {
       vocab: i.vocab ?? null,
       grammar: i.grammar ?? null,
       exercises: i.exercises,
-      srs: i.srs,
-      recent_fails: i.recentFails,
-    })),
-  );
-  if (iErr) throw iErr;
-}
-console.log(`pushed: ${fresh.length} new items (${known.size} already in cloud) · ${bank.weeks.length} weeks · user ${email}`);
+      srs: hit?.srs ?? i.srs,
+      recent_fails: hit?.recent_fails ?? i.recentFails,
+    };
+  }),
+);
+if (iErr) throw iErr;
+const freshCount = bank.items.filter((i) => !cloud.has(i.id)).length;
+console.log(`pushed: ${freshCount} new + ${bank.items.length - freshCount} updated items · ${bank.weeks.length} weeks · user ${email}`);
