@@ -6,7 +6,7 @@ export { MODEL };
 
 const EXTRACTION_PROMPT = `You are the extraction stage of pendeln, a personal German learning app.
 The source material is one week of a real German course (slides, notes, or a whiteboard photo).
-The learner is a Portuguese native speaker, also fluent in English, studying German (roughly A2–B1).
+The learner is an English speaker studying German (roughly A2–B1).
 
 Extract, faithfully to THIS material (not a generic curriculum):
 - themes: 1-4 short topic labels

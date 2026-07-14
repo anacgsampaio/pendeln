@@ -71,7 +71,7 @@ async function reviewCheckpoint(ex: Extraction): Promise<Extraction> {
     ...ex.vocab.map((v) => ({
       kind: "vocab" as const,
       ref: v,
-      label: `${v.lemma}${v.plural ? `, ${v.plural}` : ""} — ${v.translation_pt}${v.inferred ? "  (article/plural inferred)" : ""}`,
+      label: `${v.lemma}${v.plural ? `, ${v.plural}` : ""} — ${v.translation_en}${v.inferred ? "  (article/plural inferred)" : ""}`,
       confidence: v.confidence,
     })),
     ...ex.grammar_points.map((g) => ({

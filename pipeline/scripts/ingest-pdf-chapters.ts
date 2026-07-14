@@ -33,7 +33,7 @@ const wanted = chapterArgs.length > 0 ? new Set(chapterArgs.map(Number)) : null;
 const chapters = toc.chapters.filter((c) => !wanted || wanted.has(c.n));
 
 const EXTRACTION_PROMPT = `You are the extraction stage of pendeln, a personal German learning app.
-The learner is a Portuguese native speaker, also fluent in English, studying German (A1).
+The learner is an English speaker studying German (A1).
 
 From the document, extract ONLY the content of chapter CHAPTER_SPEC — ignore every other chapter.
 

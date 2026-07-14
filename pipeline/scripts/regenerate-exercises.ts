@@ -12,7 +12,9 @@ import { generateExercises } from "../src/generate.ts";
 const onlyMissing = process.argv.includes("--only-missing");
 
 const bank = loadBank();
-const targets = bank.items.filter((i) => (onlyMissing ? i.exercises.length === 0 : true));
+const targets = bank.items.filter(
+  (i) => i.kind !== "dialog" && (onlyMissing ? i.exercises.length === 0 : true),
+);
 console.log(`regenerating exercises for ${targets.length}/${bank.items.length} items`);
 
 const CHUNK = 24; // 3 LLM batches per save

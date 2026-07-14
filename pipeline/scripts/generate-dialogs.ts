@@ -29,7 +29,7 @@ const SCENARIOS = [
 const wanted = process.argv.slice(2);
 const scenarios = wanted.length > 0 ? SCENARIOS.filter((s) => wanted.includes(s.slug)) : SCENARIOS;
 
-const PROMPT = (batch: typeof SCENARIOS) => `You are the dialogue-generation stage of pendeln, a German learning app. The learner is A1-level, a Portuguese native speaker fluent in English, living in Germany.
+const PROMPT = (batch: typeof SCENARIOS) => `You are the dialogue-generation stage of pendeln, a German learning app. The learner is A1-level, an English speaker living in Germany.
 
 Write one dialogue per scenario below as a realistic chat the learner plays on their phone: the other party ("them") speaks, and at each learner turn ("me") there are exactly 3 candidate replies, exactly 1 correct. Wrong options must be tempting — plausible A1 mistakes (wrong case, false friend, wrong register/du-Sie, word order) — and each option carries a one-line English "why".
 

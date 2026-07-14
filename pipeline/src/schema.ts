@@ -20,7 +20,7 @@ export const VocabItemSchema = z.object({
   article: z.enum(["der", "die", "das"]).nullable().describe("null for non-nouns"),
   plural: z.string().nullable(),
   pos: z.enum(["noun", "verb", "adjective", "adverb", "preposition", "conjunction", "phrase", "other"]),
-  translation_pt: z.string(),
+  translation_pt: z.string().nullable().optional().describe("legacy — no longer extracted"),
   translation_en: z.string(),
   example_from_material: z.string().nullable(),
   inferred: z
