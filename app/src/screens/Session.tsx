@@ -208,10 +208,21 @@ function editDistance(a: string, b: string): number {
 
 type Verdict = { grade: Grade; label: string };
 
-function judge(typed: string, answer: string): Verdict {
-  const t = normalize(typed);
-  const a = normalize(answer);
+/** "his / its", "grade (school) / musical note" → the acceptable answers, parentheticals dropped */
+function alternatives(answer: string): string[] {
+  const base = answer.replace(/\([^)]*\)/g, " ");
+  const alts = base.split(/\s*[/,;]\s*|\s+or\s+/i).map(normalize).filter(Boolean);
+  return alts.length > 0 ? alts : [normalize(answer)];
+}
+
+function stripEnglishArticle(s: string): string {
+  return s.replace(/^(the|a|an|to)\s+/, "");
+}
+
+function judgeOne(t: string, a: string): Verdict | null {
   if (t === a) return { grade: 2, label: "Sauber! 🚃" };
+  // an extra/missing English article or 'to' is not a knowledge gap
+  if (stripEnglishArticle(t) === stripEnglishArticle(a)) return { grade: 2, label: "Sauber! 🚃" };
   const ta = stripArticle(t);
   const aa = stripArticle(a);
   if (aa.article && ta.rest === aa.rest) {
@@ -220,7 +231,18 @@ function judge(typed: string, answer: string): Verdict {
   }
   const tolerance = Math.max(1, Math.floor(a.length / 8));
   if (editDistance(t, a) <= tolerance) return { grade: 1, label: "Fast richtig — Tippfehler zählt halb" };
-  return { grade: 0, label: "Nicht ganz —" };
+  return null;
+}
+
+function judge(typed: string, answer: string): Verdict {
+  const t = normalize(typed);
+  // any listed alternative counts; take the best verdict across them
+  let best: Verdict | null = null;
+  for (const a of alternatives(answer)) {
+    const v = judgeOne(t, a);
+    if (v && (!best || v.grade > best.grade)) best = v;
+  }
+  return best ?? { grade: 0, label: "Nicht ganz —" };
 }
 
 function Typed({ ex, onGrade }: { ex: Exercise; onGrade: (g: Grade) => void }) {

@@ -12,7 +12,9 @@ For EACH item below, produce 2-4 exercises across the types cloze, recall, scram
 - scramble: prompt is a full correct German sentence (the client scrambles it), answer identical to prompt. Word order is the eternal German boss fight — use subordinate clauses when a grammar item calls for it.
 - mc_grammar: for grammar items — pick the right form/case/ending, 3 distractors.
 
-Rules: never mention or compare to Portuguese — English and German only. item_ref must exactly equal the item's id. Distractors must be genuinely plausible learner errors (wrong gender/case, false friends with English, word-order slips). Explanations are ONE compact line, in English. difficulty 1 = seen it before warm-up, 3 = full production.`;
+Rules: never mention or compare to Portuguese or any language besides English and German. item_ref must exactly equal the item's id. Distractors must be genuinely plausible learner errors (wrong gender/case, false friends with English, word-order slips). difficulty 1 = seen it before warm-up, 3 = full production.
+
+Explanations are read by a tired learner who just got the question WRONG, standing on a train. Write 1-2 short plain-English sentences that (a) state the rule or fact simply and (b) when helpful, say why the wrong answer was tempting. No arrows, no semicolon-chains, no abbreviations, no linguistics jargon. Good: "Das Leben is neuter, so the sentence starts with Das. Die feels right because most -e nouns are feminine, but Leben isn't one of them." Bad: "Neuter subject → 'Das'; feminine pulls toward 'Die'."`;
 
 function describeItem(item: BankItem): string {
   if (item.kind === "vocab" && item.vocab) {
