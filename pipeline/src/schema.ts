@@ -55,6 +55,48 @@ export const ExerciseBatchSchema = z.object({
   exercises: z.array(ExerciseSchema),
 });
 
+/** Dialogue scenarios — survival German, played as a chat where the learner picks their lines. */
+export const DialogTurnSchema = z.object({
+  speaker: z.enum(["them", "me"]),
+  de: z.string().describe("the line in German (A1-level, natural spoken register)"),
+  en: z.string().describe("English translation"),
+  options: z
+    .array(
+      z.object({
+        de: z.string(),
+        correct: z.boolean(),
+        why: z.string().describe("one compact English line: why this works / fails here"),
+      }),
+    )
+    .nullable()
+    .describe("for 'me' turns: exactly 3 options, exactly 1 correct. null for 'them' turns."),
+});
+
+export const DialogSchema = z.object({
+  id: z.string().describe("stable slug, e.g. dialog_essen_bestellen"),
+  icon: z.string().describe("a single emoji for the scenario"),
+  title_de: z.string(),
+  title_en: z.string(),
+  scenario_en: z.string().describe("one line of scene-setting the learner reads before starting"),
+  turns: z.array(DialogTurnSchema).describe("6-10 turns, alternating naturally, ending on resolution"),
+});
+export type Dialog = z.infer<typeof DialogSchema>;
+
+export const DialogBatchSchema = z.object({ dialogs: z.array(DialogSchema) });
+
+export function validateDialog(d: Dialog): string | null {
+  if (d.turns.length < 4) return "dialog too short";
+  for (const t of d.turns) {
+    if (t.speaker === "me") {
+      if (!t.options || t.options.length !== 3) return "me-turn needs exactly 3 options";
+      if (t.options.filter((o) => o.correct).length !== 1) return "me-turn needs exactly 1 correct option";
+      if (!t.options.some((o) => o.de === t.de)) return "the correct me-line must appear among options";
+    }
+  }
+  if (!d.turns.some((t) => t.speaker === "me")) return "dialog has no learner turns";
+  return null;
+}
+
 /** Hard validation — a broken exercise destroys trust; a missing one is invisible. */
 export function validateExercise(ex: Exercise, knownItemIds: Set<string>): string | null {
   if (!knownItemIds.has(ex.item_ref)) return `unknown item_ref ${ex.item_ref}`;

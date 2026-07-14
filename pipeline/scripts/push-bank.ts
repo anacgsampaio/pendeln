@@ -67,6 +67,7 @@ const { error: iErr } = await supabase.from("items").upsert(
       week: i.week,
       vocab: i.vocab ?? null,
       grammar: i.grammar ?? null,
+      dialog: i.dialog ?? null,
       exercises: i.exercises,
       srs: hit?.srs ?? i.srs,
       recent_fails: hit?.recent_fails ?? i.recentFails,

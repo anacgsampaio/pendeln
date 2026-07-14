@@ -6,11 +6,14 @@ import type { Bank } from "../../pipeline/src/model.ts";
 import { Login } from "./screens/Login";
 import { Heute } from "./screens/Heute";
 import { Session } from "./screens/Session";
+import { Notizen } from "./screens/Notizen";
+import { Dialoge } from "./screens/Dialoge";
 
 export default function App() {
   const [auth, setAuth] = useState<AuthSession | null | undefined>(undefined);
   const [bank, setBank] = useState<Bank | null>(() => cachedBank());
   const [ride, setRide] = useState<{ minutes: number; lines: string[] | null; focus: string[] | null } | null>(null);
+  const [view, setView] = useState<"heute" | "notizen" | "dialoge">("heute");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setAuth(data.session));
@@ -47,5 +50,14 @@ export default function App() {
     );
   }
 
-  return <Heute bank={bank} onStart={(minutes, lines, focus) => setRide({ minutes, lines, focus })} />;
+  if (view === "notizen" && bank) return <Notizen bank={bank} onBack={() => setView("heute")} />;
+  if (view === "dialoge" && bank) return <Dialoge bank={bank} onBack={() => setView("heute")} />;
+
+  return (
+    <Heute
+      bank={bank}
+      onStart={(minutes, lines, focus) => setRide({ minutes, lines, focus })}
+      onNav={setView}
+    />
+  );
 }

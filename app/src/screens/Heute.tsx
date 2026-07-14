@@ -8,9 +8,11 @@ import { metroLines, INTERSECTIONS, intersectionLines, type Intersection } from 
 export function Heute({
   bank,
   onStart,
+  onNav,
 }: {
   bank: Bank | null;
   onStart: (minutes: number, lines: string[] | null, focus: string[] | null) => void;
+  onNav: (view: "notizen" | "dialoge") => void;
 }) {
   const [minutes, setMinutes] = useState(10);
   const [picked, setPicked] = useState<Set<string>>(new Set());
@@ -67,6 +69,11 @@ export function Heute({
         <div className="brand"><span className="tram">🚃</span>pendeln</div>
         <button className="btn-quiet" onClick={() => supabase.auth.signOut()}>abmelden</button>
       </header>
+
+      <div className="nav-row">
+        <button className="nav-tile" onClick={() => onNav("notizen")}>📖 Notizen</button>
+        <button className="nav-tile" onClick={() => onNav("dialoge")}>💬 Dialoge</button>
+      </div>
 
       <div className="stat-row">
         <div className="card stat"><span className="n">{due}</span><span className="l">fällig</span></div>

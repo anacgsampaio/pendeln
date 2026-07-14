@@ -34,6 +34,7 @@ export async function refreshBank(): Promise<Bank | null> {
           week: r.week,
           vocab: r.vocab ?? undefined,
           grammar: r.grammar ?? undefined,
+          dialog: r.dialog ?? undefined,
           exercises: r.exercises,
           srs: r.srs,
           recentFails: r.recent_fails,

@@ -50,7 +50,9 @@ export function intersectionLines(bank: Bank, x: Intersection): [string, string]
 }
 
 export function metroLines(bank: Bank, now = new Date()): MetroLine[] {
-  return bank.weeks.map((w, idx) => {
+  return bank.weeks
+    .filter((w) => bank.items.some((i) => i.week === w.label && i.exercises.length > 0))
+    .map((w, idx) => {
     const items = bank.items.filter((i) => i.week === w.label && i.exercises.length > 0);
     const m = w.label.match(/Kapitel\s+(\d+)\s*—\s*(.+)$/);
     return {

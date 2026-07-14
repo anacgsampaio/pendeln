@@ -1,4 +1,4 @@
-import type { Exercise, GrammarPoint, VocabItem } from "./schema.ts";
+import type { Dialog, Exercise, GrammarPoint, VocabItem } from "./schema.ts";
 import type { SrsState } from "./srs.ts";
 
 /**
@@ -8,10 +8,11 @@ import type { SrsState } from "./srs.ts";
 
 export type BankItem = {
   id: string;
-  kind: "vocab" | "grammar";
+  kind: "vocab" | "grammar" | "dialog";
   week: string;
   vocab?: VocabItem;
   grammar?: GrammarPoint;
+  dialog?: Dialog;
   exercises: Exercise[];
   srs: SrsState;
   /** failures in the last 14 days — ≥2 marks a weak spot */

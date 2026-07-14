@@ -520,3 +520,87 @@ button {
   border: 2.5px solid currentColor;
   background: transparent;
 }
+
+/* nav tiles */
+.nav-row {
+  display: flex;
+  gap: 10px;
+}
+.nav-tile {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+.nav-tile:active { background: var(--paper-sunken); }
+
+/* notizen */
+.notes-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.notes-title { margin: 0; }
+.note-card { padding: 14px 16px; }
+.note-name { font-weight: 700; }
+.note-summary { margin-top: 4px; color: var(--ink-soft); font-size: 0.92rem; }
+.note-example {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--paper-sunken);
+  border-radius: 8px;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.vocab-table { width: 100%; border-collapse: collapse; }
+.vocab-table td { padding: 7px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.vocab-table tr:last-child td { border-bottom: none; }
+.v-de { font-weight: 600; }
+.v-plural { font-weight: 400; color: var(--ink-faint); }
+.v-en { color: var(--ink-soft); text-align: right; }
+
+/* dialoge */
+.dialog-icon { font-size: 1.3rem; flex: none; }
+.dialog-sub { display: block; font-size: 0.75rem; color: var(--ink-faint); }
+.dialog-scene { font-size: 0.8rem; color: var(--ink-faint); text-align: right; }
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+}
+.bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.bubble.them {
+  align-self: flex-start;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+.bubble.me {
+  align-self: flex-end;
+  background: var(--signal);
+  color: var(--signal-ink);
+  border-bottom-right-radius: 4px;
+}
+.bubble.me.missed { outline: 2px dashed var(--warn); }
+.bubble-en {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(0,0,0,0.15);
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+.dialog-options { display: flex; flex-direction: column; gap: 8px; }
