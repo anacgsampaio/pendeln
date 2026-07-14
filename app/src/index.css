@@ -604,3 +604,26 @@ button {
   opacity: 0.75;
 }
 .dialog-options { display: flex; flex-direction: column; gap: 8px; }
+
+/* scramble v2 — commit freely, judge at the end */
+.built {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  min-height: 1.6em;
+}
+.built-word {
+  padding: 2px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.built-word.ok { color: var(--go); }
+.built-word.bad {
+  color: var(--stop);
+  text-decoration: line-through wavy;
+}
+.built-hint {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}

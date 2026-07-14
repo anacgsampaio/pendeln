@@ -29,7 +29,7 @@ export function PendelnLogo({ fontSize = 24, word = "endeln" }: { fontSize?: num
   // 8a ratios at font 45px: svg 97x150, shifted down 40px, text pulled left 50px
   const w = fontSize * (97 / 45);
   const h = fontSize * (150 / 45);
-  const dots = fontSize >= 20; // header sizes drop the dots — too small to read
+  const dots = true; // Ana's call: the station dots ride at every size
   return (
     <span style={{ display: "inline-flex", alignItems: "baseline", lineHeight: 1 }} aria-label={`p${word}`}>
       <svg

@@ -314,7 +314,7 @@ function Typed({ ex, onGrade }: { ex: Exercise; onGrade: (g: Grade) => void }) {
   );
 }
 
-/** scramble: tap the words in order */
+/** scramble: build the sentence in any order you believe in — judged only at the end */
 function Scramble({ ex, onGrade }: { ex: Exercise; onGrade: (g: Grade) => void }) {
   const words = useMemo(() => ex.prompt.trim().split(/\s+/), [ex]);
   const shuffled = useMemo(
@@ -322,33 +322,56 @@ function Scramble({ ex, onGrade }: { ex: Exercise; onGrade: (g: Grade) => void }
     [words],
   );
   const [taken, setTaken] = useState<number[]>([]);
-  const [mistakes, setMistakes] = useState(0);
+  const [checked, setChecked] = useState(false);
   const done = taken.length === words.length;
 
-  const tap = (origIdx: number) => {
-    // accept any chip carrying the expected word (sentences repeat words)
-    if (words[origIdx] === words[taken.length]) {
-      setTaken((t) => [...t, origIdx]);
-    } else {
-      setMistakes((m) => m + 1);
-    }
-  };
+  // wrong-position count once checked (words can repeat, so compare strings)
+  const wrong = checked ? words.reduce((n, w, k) => n + (words[taken[k]] !== w ? 1 : 0), 0) : 0;
+  const correct = checked && wrong === 0;
 
   return (
     <div className="exercise">
       <div className="ex-type">{TYPE_LABEL.scramble}</div>
-      <div className="built">{taken.map((i) => words[i]).join(" ")}</div>
+      <div className="built">
+        {taken.map((wi, k) => (
+          <span
+            key={k}
+            className={`built-word${checked ? (words[wi] === words[k] ? " ok" : " bad") : ""}`}
+            onClick={() => !checked && k === taken.length - 1 && setTaken((t) => t.slice(0, -1))}
+          >
+            {words[wi]}
+          </span>
+        ))}
+        {!checked && taken.length > 0 && <span className="built-hint">(letztes Wort antippen = zurück)</span>}
+      </div>
       <div className="chips">
         {shuffled.map(({ w, i }) => (
-          <button key={i} className="chip" disabled={taken.includes(i)} onClick={() => tap(i)}>
+          <button
+            key={i}
+            className="chip"
+            disabled={checked || taken.includes(i)}
+            onClick={() => setTaken((t) => [...t, i])}
+          >
             {w}
           </button>
         ))}
       </div>
-      {done && (
+      {done && !checked && (
+        <button className="btn-primary" onClick={() => setChecked(true)}>
+          prüfen
+        </button>
+      )}
+      {checked && (
         <>
-          {mistakes > 0 && <div className="explain">{ex.explanation}</div>}
-          <button className="btn-primary" onClick={() => onGrade(mistakes === 0 ? 2 : mistakes <= 2 ? 1 : 0)}>
+          {!correct && (
+            <>
+              <div className="verdict v-0">Richtig wäre:</div>
+              <div className="ex-prompt" style={{ fontSize: "1.05rem" }}>{ex.prompt}</div>
+              <div className="explain">{ex.explanation}</div>
+            </>
+          )}
+          {correct && <div className="verdict v-2">Sauber! 🚃</div>}
+          <button className="btn-primary" onClick={() => onGrade(correct ? 2 : wrong <= 2 ? 1 : 0)}>
             weiter →
           </button>
         </>
