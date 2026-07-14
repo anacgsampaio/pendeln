@@ -1,4 +1,5 @@
 import { supabase } from "../lib/supabase";
+import { PendelnLogo } from "../components/Logo";
 
 export function Login() {
   const signIn = () =>
@@ -10,7 +11,7 @@ export function Login() {
   return (
     <div className="screen login">
       <div>
-        <h1>🚃 pendeln</h1>
+        <h1><PendelnLogo fontSize={40} /></h1>
         <p>Dein Deutschkurs, in Pendelgröße.</p>
       </div>
       <button className="btn-google" onClick={signIn}>

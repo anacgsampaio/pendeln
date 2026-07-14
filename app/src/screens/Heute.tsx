@@ -3,6 +3,7 @@ import { supabase } from "../lib/supabase";
 import { pendingCount } from "../lib/store";
 import { isDue } from "../../../pipeline/src/srs.ts";
 import type { Bank } from "../../../pipeline/src/model.ts";
+import { PendelnLogo } from "../components/Logo";
 import { metroLines, INTERSECTIONS, intersectionLines, type Intersection } from "../lib/lines";
 
 export function Heute({
@@ -46,7 +47,7 @@ export function Heute({
   if (!bank || bank.items.length === 0) {
     return (
       <div className="screen login">
-        <div className="brand"><span className="tram">🚃</span>pendeln</div>
+        <PendelnLogo fontSize={19} />
         <p>
           Noch keine Übungen. Sonntagsritual auf dem Laptop:
           <br />
@@ -66,7 +67,7 @@ export function Heute({
   return (
     <div className="screen">
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div className="brand"><span className="tram">🚃</span>pendeln</div>
+        <PendelnLogo fontSize={19} />
         <button className="btn-quiet" onClick={() => supabase.auth.signOut()}>abmelden</button>
       </header>
 

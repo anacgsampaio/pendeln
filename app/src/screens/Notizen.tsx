@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Bank } from "../../../pipeline/src/model.ts";
 import { metroLines } from "../lib/lines";
+import { PendelnLogo } from "../components/Logo";
 
 /** Notizen — the reading room: every chapter's grammar and vocab, no quiz, no timer. */
 export function Notizen({ bank, onBack }: { bank: Bank; onBack: () => void }) {
@@ -62,7 +63,7 @@ export function Notizen({ bank, onBack }: { bank: Bank; onBack: () => void }) {
     <div className="screen">
       <header className="notes-head">
         <button className="btn-quiet" onClick={onBack}>← zurück</button>
-        <div className="brand"><span className="tram">🚃</span>Notizen</div>
+        <PendelnLogo fontSize={19} word="notizen" />
       </header>
       <div className="card netz">
         <div className="line-list" style={{ maxHeight: "none" }}>

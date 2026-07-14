@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import type { Bank } from "../../../pipeline/src/model.ts";
 import type { Dialog } from "../../../pipeline/src/schema.ts";
+import { PendelnLogo } from "../components/Logo";
 
 /** Dialoge — survival German as playable chats: they talk, you pick your line. */
 export function Dialoge({ bank, onBack }: { bank: Bank; onBack: () => void }) {
@@ -16,7 +17,7 @@ export function Dialoge({ bank, onBack }: { bank: Bank; onBack: () => void }) {
     <div className="screen">
       <header className="notes-head">
         <button className="btn-quiet" onClick={onBack}>← zurück</button>
-        <div className="brand"><span className="tram">💬</span>Dialoge</div>
+        <PendelnLogo fontSize={19} word="dialoge" />
       </header>
       {dialogs.length === 0 ? (
         <p style={{ color: "var(--ink-faint)" }}>
