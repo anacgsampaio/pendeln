@@ -14,8 +14,21 @@ const TYPE_LABEL: Record<Exercise["type"], string> = {
   mc_grammar: "Grammatik",
 };
 
-export function Session({ bank, minutes, onDone }: { bank: Bank; minutes: number; onDone: () => void }) {
-  const slots = useMemo(() => assembleSession(bank, minutes), [bank, minutes]);
+export function Session({
+  bank,
+  minutes,
+  lines,
+  onDone,
+}: {
+  bank: Bank;
+  minutes: number;
+  lines: string[] | null;
+  onDone: () => void;
+}) {
+  const slots = useMemo(
+    () => assembleSession(bank, minutes, new Date(), lines ?? undefined),
+    [bank, minutes, lines],
+  );
   const [idx, setIdx] = useState(0);
   const [good, setGood] = useState(0);
 

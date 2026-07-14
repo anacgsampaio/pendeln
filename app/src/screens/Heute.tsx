@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { pendingCount } from "../lib/store";
 import { isDue } from "../../../pipeline/src/srs.ts";
 import type { Bank } from "../../../pipeline/src/model.ts";
+import { metroLines } from "../lib/lines";
 
-export function Heute({ bank, onStart }: { bank: Bank | null; onStart: (minutes: number) => void }) {
+export function Heute({
+  bank,
+  onStart,
+}: {
+  bank: Bank | null;
+  onStart: (minutes: number, lines: string[] | null) => void;
+}) {
   const [minutes, setMinutes] = useState(10);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
+  const lines = useMemo(() => (bank ? metroLines(bank) : []), [bank]);
+
+  const toggle = (label: string) =>
+    setPicked((p) => {
+      const next = new Set(p);
+      if (next.has(label)) next.delete(label);
+      else next.add(label);
+      return next;
+    });
 
   if (!bank || bank.items.length === 0) {
     return (
@@ -40,15 +57,37 @@ export function Heute({ bank, onStart }: { bank: Bank | null; onStart: (minutes:
         <div className="card stat"><span className="n">{bank.items.length}</span><span className="l">gesamt</span></div>
       </div>
 
-      {newestWeek && (
-        <div className="card">
-          <div className="ex-type">aktuelle Woche</div>
-          <div style={{ fontWeight: 600, marginTop: 6 }}>{newestWeek.label}</div>
-          <div style={{ color: "var(--ink-faint)", fontSize: "0.85rem", marginTop: 4 }}>
-            {newestWeek.themes.join(" · ")}
-          </div>
+      <div className="card netz">
+        <div className="ex-type" style={{ display: "flex", justifyContent: "space-between" }}>
+          <span>Netzplan — Linien wählen</span>
+          {picked.size > 0 && (
+            <button className="netz-clear" onClick={() => setPicked(new Set())}>
+              alle Linien
+            </button>
+          )}
         </div>
-      )}
+        <div className="line-list">
+          {lines.map((l) => {
+            const on = picked.has(l.label);
+            return (
+              <button
+                key={l.label}
+                className={`line-row${on ? " on" : ""}${picked.size > 0 && !on ? " dim" : ""}`}
+                onClick={() => toggle(l.label)}
+              >
+                <span className="line-badge" style={{ background: l.color }}>{l.badge}</span>
+                <span className="line-name">{l.name}</span>
+                <span className="line-due">{l.due > 0 ? `${l.due} fällig` : `${l.items} ✓`}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="netz-hint">
+          {picked.size === 0
+            ? `automatische Route — ${newestWeek?.label ?? ""}`
+            : `${picked.size} Linie${picked.size > 1 ? "n" : ""} · fällige zuerst, dann Wiederholung`}
+        </div>
+      </div>
 
       <div>
         <div className="ex-type" style={{ marginBottom: 8 }}>Sitzungslänge</div>
@@ -61,7 +100,7 @@ export function Heute({ bank, onStart }: { bank: Bank | null; onStart: (minutes:
         </div>
       </div>
 
-      <button className="btn-primary" onClick={() => onStart(minutes)}>
+      <button className="btn-primary" onClick={() => onStart(minutes, picked.size > 0 ? [...picked] : null)}>
         Einsteigen →
       </button>
 

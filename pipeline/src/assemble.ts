@@ -16,6 +16,22 @@ const SECONDS_PER_TYPE: Record<Exercise["type"], number> = {
 
 export type SessionSlot = { item: BankItem; exercise: Exercise };
 
+/** Round-robin across weeks so one line never hogs a multi-line ride. */
+function interleaveByWeek(items: BankItem[]): BankItem[] {
+  const byWeek = new Map<string, BankItem[]>();
+  for (const i of items) {
+    const list = byWeek.get(i.week) ?? [];
+    list.push(i);
+    byWeek.set(i.week, list);
+  }
+  const queues = [...byWeek.values()];
+  const out: BankItem[] = [];
+  for (let round = 0; out.length < items.length; round++) {
+    for (const q of queues) if (round < q.length) out.push(q[round]);
+  }
+  return out;
+}
+
 /**
  * Stage-aware exercise choice: fresh items start with recognition (recall/MC),
  * maturing items graduate to production (cloze, then scramble). Within a stage,
@@ -49,17 +65,36 @@ function pickExercise(
   return best;
 }
 
-export function assembleSession(bank: Bank, minutes: number, now = new Date()): SessionSlot[] {
+export function assembleSession(
+  bank: Bank,
+  minutes: number,
+  now = new Date(),
+  lines?: string[],
+): SessionSlot[] {
   const budget = minutes * 60;
-  const newestWeek = bank.weeks.at(-1)?.label;
 
-  const pools = {
-    fresh: bank.items.filter((i) => i.week === newestWeek && i.exercises.length > 0),
-    due: bank.items.filter((i) => i.week !== newestWeek && isDue(i.srs, now) && i.exercises.length > 0),
-    weak: bank.items.filter((i) => i.recentFails >= 2 && i.exercises.length > 0),
-  };
+  // riding chosen lines: due items first, then pure revisit — mastery is no excuse
+  let poolList: Array<{ pool: BankItem[]; target: number }>;
+  if (lines && lines.length > 0) {
+    const sel = bank.items.filter((i) => i.exercises.length > 0 && lines.includes(i.week));
+    poolList = [
+      { pool: interleaveByWeek(sel.filter((i) => isDue(i.srs, now))), target: budget * 0.7 },
+      { pool: interleaveByWeek(sel.filter((i) => !isDue(i.srs, now))), target: budget * 0.3 },
+    ];
+  } else {
+    const newestWeek = bank.weeks.at(-1)?.label;
+    const pools = {
+      fresh: bank.items.filter((i) => i.week === newestWeek && i.exercises.length > 0),
+      due: bank.items.filter((i) => i.week !== newestWeek && isDue(i.srs, now) && i.exercises.length > 0),
+      weak: bank.items.filter((i) => i.recentFails >= 2 && i.exercises.length > 0),
+    };
+    poolList = [
+      { pool: pools.fresh, target: budget * 0.5 },
+      { pool: pools.due, target: budget * 0.35 },
+      { pool: pools.weak, target: budget * 0.15 },
+    ];
+  }
 
-  const targets = { fresh: budget * 0.5, due: budget * 0.35, weak: budget * 0.15 };
   const slots: SessionSlot[] = [];
   const usedExercises = new Set<Exercise>();
   const typeCounts: Record<Exercise["type"], number> = { recall: 0, cloze: 0, scramble: 0, mc_grammar: 0 };
@@ -86,10 +121,11 @@ export function assembleSession(bank: Bank, minutes: number, now = new Date()): 
     return spent;
   };
 
+  // unused budget cascades forward — a light pool never shortens the ride
   let leftover = 0;
-  leftover += targets.fresh - fill(pools.fresh, targets.fresh);
-  leftover += targets.due - fill(pools.due, targets.due + leftover);
-  fill(pools.weak, targets.weak + leftover); // a bad week never becomes a punishment session
+  for (const { pool, target } of poolList) {
+    leftover += target - fill(pool, target + leftover);
+  }
 
   return orderForTheTrain(slots);
 }

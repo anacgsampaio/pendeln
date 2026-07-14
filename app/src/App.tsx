@@ -10,7 +10,7 @@ import { Session } from "./screens/Session";
 export default function App() {
   const [auth, setAuth] = useState<AuthSession | null | undefined>(undefined);
   const [bank, setBank] = useState<Bank | null>(() => cachedBank());
-  const [minutes, setMinutes] = useState<number | null>(null); // non-null = session running
+  const [ride, setRide] = useState<{ minutes: number; lines: string[] | null } | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setAuth(data.session));
@@ -32,18 +32,19 @@ export default function App() {
     if (!auth) return <Login />;
   }
 
-  if (minutes !== null && bank) {
+  if (ride !== null && bank) {
     return (
       <Session
         bank={bank}
-        minutes={minutes}
+        minutes={ride.minutes}
+        lines={ride.lines}
         onDone={() => {
-          setMinutes(null);
+          setRide(null);
           setBank(cachedBank());
         }}
       />
     );
   }
 
-  return <Heute bank={bank} onStart={setMinutes} />;
+  return <Heute bank={bank} onStart={(minutes, lines) => setRide({ minutes, lines })} />;
 }
