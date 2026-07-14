@@ -485,3 +485,38 @@ button {
   font-size: 0.78rem;
   color: var(--ink-faint);
 }
+
+/* umsteigen — intersection chips */
+.crossing-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.crossing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper-raised);
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+.crossing.on {
+  border-color: var(--signal);
+  background: var(--signal);
+  color: var(--signal-ink);
+  font-weight: 600;
+}
+.crossing-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2.5px solid currentColor;
+  background: transparent;
+}

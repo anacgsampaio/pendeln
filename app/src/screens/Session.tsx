@@ -18,16 +18,18 @@ export function Session({
   bank,
   minutes,
   lines,
+  focus,
   onDone,
 }: {
   bank: Bank;
   minutes: number;
   lines: string[] | null;
+  focus: string[] | null;
   onDone: () => void;
 }) {
   const slots = useMemo(
-    () => assembleSession(bank, minutes, new Date(), lines ?? undefined),
-    [bank, minutes, lines],
+    () => assembleSession(bank, minutes, new Date(), lines ?? undefined, focus ?? undefined),
+    [bank, minutes, lines, focus],
   );
   const [idx, setIdx] = useState(0);
   const [good, setGood] = useState(0);

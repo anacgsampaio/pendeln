@@ -3,26 +3,43 @@ import { supabase } from "../lib/supabase";
 import { pendingCount } from "../lib/store";
 import { isDue } from "../../../pipeline/src/srs.ts";
 import type { Bank } from "../../../pipeline/src/model.ts";
-import { metroLines } from "../lib/lines";
+import { metroLines, INTERSECTIONS, intersectionLines, type Intersection } from "../lib/lines";
 
 export function Heute({
   bank,
   onStart,
 }: {
   bank: Bank | null;
-  onStart: (minutes: number, lines: string[] | null) => void;
+  onStart: (minutes: number, lines: string[] | null, focus: string[] | null) => void;
 }) {
   const [minutes, setMinutes] = useState(10);
   const [picked, setPicked] = useState<Set<string>>(new Set());
+  const [crossing, setCrossing] = useState<Intersection | null>(null);
   const lines = useMemo(() => (bank ? metroLines(bank) : []), [bank]);
+  const crossings = useMemo(
+    () => (bank ? INTERSECTIONS.filter((x) => intersectionLines(bank, x)) : []),
+    [bank],
+  );
 
-  const toggle = (label: string) =>
+  const toggle = (label: string) => {
+    setCrossing(null);
     setPicked((p) => {
       const next = new Set(p);
       if (next.has(label)) next.delete(label);
       else next.add(label);
       return next;
     });
+  };
+
+  const pickCrossing = (x: Intersection) => {
+    if (crossing?.id === x.id) {
+      setCrossing(null);
+      setPicked(new Set());
+      return;
+    }
+    setCrossing(x);
+    setPicked(new Set(intersectionLines(bank!, x)!));
+  };
 
   if (!bank || bank.items.length === 0) {
     return (
@@ -82,10 +99,29 @@ export function Heute({
             );
           })}
         </div>
+        {crossings.length > 0 && (
+          <>
+            <div className="ex-type" style={{ marginTop: 12 }}>Umsteigen — Kreuzungen</div>
+            <div className="crossing-row">
+              {crossings.map((x) => (
+                <button
+                  key={x.id}
+                  className={`crossing${crossing?.id === x.id ? " on" : ""}`}
+                  onClick={() => pickCrossing(x)}
+                >
+                  <span className="crossing-dot" />
+                  {x.name}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
         <div className="netz-hint">
-          {picked.size === 0
-            ? `automatische Route — ${newestWeek?.label ?? ""}`
-            : `${picked.size} Linie${picked.size > 1 ? "n" : ""} · fällige zuerst, dann Wiederholung`}
+          {crossing
+            ? `Umsteigebahnhof ${crossing.name} — Übungen an der Kreuzung zuerst`
+            : picked.size === 0
+              ? `automatische Route — ${newestWeek?.label ?? ""}`
+              : `${picked.size} Linie${picked.size > 1 ? "n" : ""} · fällige zuerst, dann Wiederholung`}
         </div>
       </div>
 
@@ -100,7 +136,10 @@ export function Heute({
         </div>
       </div>
 
-      <button className="btn-primary" onClick={() => onStart(minutes, picked.size > 0 ? [...picked] : null)}>
+      <button
+        className="btn-primary"
+        onClick={() => onStart(minutes, picked.size > 0 ? [...picked] : null, crossing?.focus ?? null)}
+      >
         Einsteigen →
       </button>
 

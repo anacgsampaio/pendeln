@@ -65,22 +65,47 @@ function pickExercise(
   return best;
 }
 
+/** How strongly an item's exercises touch the focus concepts (intersection rides). */
+function focusScore(item: BankItem, focus: string[]): number {
+  let hits = 0;
+  for (const ex of item.exercises) {
+    const text = `${ex.prompt} ${ex.answer} ${ex.explanation}`.toLowerCase();
+    for (const f of focus) if (text.includes(f)) hits++;
+  }
+  if (item.kind === "grammar" && item.grammar) {
+    const text = `${item.grammar.name} ${item.grammar.summary}`.toLowerCase();
+    for (const f of focus) if (text.includes(f)) hits += 2; // grammar points ARE the crossing
+  }
+  return hits;
+}
+
 export function assembleSession(
   bank: Bank,
   minutes: number,
   now = new Date(),
   lines?: string[],
+  focus?: string[],
 ): SessionSlot[] {
   const budget = minutes * 60;
 
   // riding chosen lines: due items first, then pure revisit — mastery is no excuse
   let poolList: Array<{ pool: BankItem[]; target: number }>;
   if (lines && lines.length > 0) {
-    const sel = bank.items.filter((i) => i.exercises.length > 0 && lines.includes(i.week));
-    poolList = [
-      { pool: interleaveByWeek(sel.filter((i) => isDue(i.srs, now))), target: budget * 0.7 },
-      { pool: interleaveByWeek(sel.filter((i) => !isDue(i.srs, now))), target: budget * 0.3 },
-    ];
+    let sel = bank.items.filter((i) => i.exercises.length > 0 && lines.includes(i.week));
+    if (focus && focus.length > 0) {
+      const f = focus.map((s) => s.toLowerCase());
+      // transfer-station ride: items touching the crossing concepts board first
+      sel = [...sel].sort((a, b) => focusScore(b, f) - focusScore(a, f));
+      poolList = [
+        { pool: interleaveByWeek(sel.filter((i) => focusScore(i, f) > 0)), target: budget * 0.75 },
+        { pool: interleaveByWeek(sel.filter((i) => focusScore(i, f) === 0)), target: budget * 0.25 },
+      ];
+    } else {
+      poolList = [
+        { pool: interleaveByWeek(sel.filter((i) => isDue(i.srs, now))), target: budget * 0.7 },
+        { pool: interleaveByWeek(sel.filter((i) => !isDue(i.srs, now))), target: budget * 0.3 },
+      ];
+    }
   } else {
     const newestWeek = bank.weeks.at(-1)?.label;
     const pools = {
