@@ -662,6 +662,13 @@ button {
   max-width: 520px;
   align-self: center;
   margin-top: 4vh;
+  aspect-ratio: 1 / 0.95;
+  overflow: hidden;
+}
+.login-hero-zoom {
+  position: relative;
+  transform: scale(1.5);
+  transform-origin: 50% 58%;
 }
 .login-endeln {
   position: absolute;

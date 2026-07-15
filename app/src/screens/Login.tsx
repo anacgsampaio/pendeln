@@ -11,8 +11,10 @@ export function Login() {
     <div className="screen login login-netz">
       {/* the P is the U-Bahn: Stephansplatz-Landstraße-Stadtpark-Karlsplatz — and the P of pendeln */}
       <div className="login-hero">
-        <img className="login-map" src="/login-netz.png" alt="pendeln" />
-        <span className="login-endeln" aria-hidden>endeln</span>
+        <div className="login-hero-zoom">
+          <img className="login-map" src="/login-netz.png" alt="pendeln" />
+          <span className="login-endeln" aria-hidden>endeln</span>
+        </div>
       </div>
       <div className="login-copy">
         <p>Dein Deutschkurs, in Pendelgröße.</p>
