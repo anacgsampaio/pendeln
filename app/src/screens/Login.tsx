@@ -1,5 +1,4 @@
 import { supabase } from "../lib/supabase";
-import { PendelnLogo } from "../components/Logo";
 
 export function Login() {
   const signIn = () =>
@@ -9,9 +8,11 @@ export function Login() {
     });
 
   return (
-    <div className="screen login">
-      <div>
-        <h1><PendelnLogo fontSize={40} /></h1>
+    <div className="screen login login-netz">
+      {/* the P is the U-Bahn: Stephansplatz-Landstraße-Stadtpark-Karlsplatz, centered on the real map */}
+      <img className="login-map" src="/login-netz.png" alt="" />
+      <div className="login-copy">
+        <h1 className="login-word">pendeln</h1>
         <p>Dein Deutschkurs, in Pendelgröße.</p>
       </div>
       <button className="btn-google" onClick={signIn}>
